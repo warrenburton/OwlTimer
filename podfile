@@ -1,0 +1,18 @@
+# Podfile
+
+# Select the appropriate platform below
+# ignore all warnings from all pods
+inhibit_all_warnings!
+platform :osx, '10.13'
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target :OwlTimer do
+    pod 'Alamofire'
+end
+
+target :OwlTimerTests do
+  pod 'Kiwi'
+  pod 'Quick'
+  pod 'Nimble'
+end

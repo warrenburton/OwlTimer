@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.7.3)
+  - Kiwi (3.0.0)
+  - Nimble (7.1.3)
+  - Quick (1.3.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kiwi
+  - Nimble
+  - Quick
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kiwi
+    - Nimble
+    - Quick
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+  Nimble: 2839b01d1b31f6a6a7777a221f0d91cf52e8e27b
+  Quick: d17304d58d0d169dd0bd1c6e5c28e3318de32a1a
+
+PODFILE CHECKSUM: a2f8d117fdbb7698d61eb4e497720747f60de969
+
+COCOAPODS: 1.5.3

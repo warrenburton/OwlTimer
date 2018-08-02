@@ -1,0 +1,6 @@
+module Pods_OwlTimer {
+  umbrella header "Pods-OwlTimer-umbrella.h"
+
+  export *
+  module * { export * }
+}
