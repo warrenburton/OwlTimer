@@ -18,11 +18,7 @@ enum ServiceError: Error {
 /// vends single serving network sessions
 ///
 class ServiceFactory: NSObject {
-    
-    
-    
     var presetQueryService: PresetQueryService {
         return PresetQuery()
     }
-
 }

@@ -8,11 +8,10 @@
 
 import Cocoa
 
-class OwlWindow: NSPanel {
+class OwlWindow: NSWindow {
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
-        super.init(contentRect: contentRect, styleMask: [.borderless,.utilityWindow], backing: .buffered , defer: false)
-        //self.hasShadow = false
+        super.init(contentRect: contentRect, styleMask: [.borderless], backing: .buffered , defer: false)
         self.backgroundColor = .clear
         self.isOpaque = false
     }

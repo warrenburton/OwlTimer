@@ -11,6 +11,12 @@ import Cocoa
 class PresetSource: NSObject {
     var presets: [Preset]
     
+    let formatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("HH'-'mm'-'ss")
+        return formatter
+    }()
+    
     init(presets:[Preset]) {
         self.presets = presets
         super.init()
@@ -24,6 +30,8 @@ extension PresetSource: NSComboBoxDataSource {
     }
     
     func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
-        return presets[index]
+        let preset = presets[index]
+        let formattedtime = formatter.string(from:  Date(timeIntervalSinceReferenceDate: preset.duration))
+        return "\(preset.name) - \(formattedtime)"
     }
 }

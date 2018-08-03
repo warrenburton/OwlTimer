@@ -23,6 +23,7 @@
 		AD853B1A2113185600FFCA02 /* PresetQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B172113185600FFCA02 /* PresetQuery.swift */; };
 		AD853B1B2113185600FFCA02 /* PresetQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B182113185600FFCA02 /* PresetQueryService.swift */; };
 		AD853B1D211319AB00FFCA02 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B1C211319AA00FFCA02 /* RemoteConfig.swift */; };
+		AD853B20211459FE00FFCA02 /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B1F211459FE00FFCA02 /* TimerState.swift */; };
 		ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37761210E509500F96EDF /* AppDelegate.swift */; };
 		ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37763210E509500F96EDF /* TimerViewController.swift */; };
 		ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADB37765210E509D00F96EDF /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		AD853B172113185600FFCA02 /* PresetQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetQuery.swift; sourceTree = "<group>"; };
 		AD853B182113185600FFCA02 /* PresetQueryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetQueryService.swift; sourceTree = "<group>"; };
 		AD853B1C211319AA00FFCA02 /* RemoteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
+		AD853B1F211459FE00FFCA02 /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		ADB3775E210E509400F96EDF /* OwlTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB37761210E509500F96EDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADB37763210E509500F96EDF /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -141,12 +143,12 @@
 		AD853B0821130BF500FFCA02 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD853B1F211459FE00FFCA02 /* TimerState.swift */,
 				ADB37767210E509D00F96EDF /* Main.storyboard */,
+				ADB37763210E509500F96EDF /* TimerViewController.swift */,
 				AD853AF82110F9E500FFCA02 /* SettingsController.swift */,
 				AD853AF62110F8D400FFCA02 /* SettingsController.storyboard */,
-				ADB37781210E529800F96EDF /* DragDetector.swift */,
-				ADB3777F210E50FC00F96EDF /* OwlWindow.swift */,
-				ADB37763210E509500F96EDF /* TimerViewController.swift */,
+				AD853B1E21132CFA00FFCA02 /* APIHelp */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +197,15 @@
 				AD853B162113185600FFCA02 /* ServiceFactory.swift */,
 			);
 			path = "Web API";
+			sourceTree = "<group>";
+		};
+		AD853B1E21132CFA00FFCA02 /* APIHelp */ = {
+			isa = PBXGroup;
+			children = (
+				ADB37781210E529800F96EDF /* DragDetector.swift */,
+				ADB3777F210E50FC00F96EDF /* OwlWindow.swift */,
+			);
+			path = APIHelp;
 			sourceTree = "<group>";
 		};
 		ADB37755210E509400F96EDF = {
@@ -398,6 +409,7 @@
 				ADB37788210E601E00F96EDF /* CountdownTimer.swift in Sources */,
 				AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */,
 				AD853B1B2113185600FFCA02 /* PresetQueryService.swift in Sources */,
+				AD853B20211459FE00FFCA02 /* TimerState.swift in Sources */,
 				AD853AFD2111DAE200FFCA02 /* LabelDecorator.swift in Sources */,
 				AD853AFB2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift in Sources */,
 				ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */,

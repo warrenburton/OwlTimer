@@ -8,36 +8,43 @@
 
 import Cocoa
 
-class TimerViewController: NSViewController {
+class TimerViewController: NSViewController, TimerStateTracking {
     
-    enum State {
-        case stopped
-        case paused
-        case running
-    }
-    var state: State = .stopped {
+    private var downstreamTrackers = [TimerStateTracking]()
+    var state: TimerState = .stopped {
         didSet {
             validateDisplay()
+            for tracker in downstreamTrackers {
+                tracker.state = state
+            }
         }
     }
     
     @IBOutlet weak var timerDisplay: NSTextField!
-    @IBOutlet weak var startStopButton: NSButton!
     @IBOutlet weak var controlPanel: NSView!
+    @IBOutlet weak var controlLayer: NSView!
     
+    var trackingRectTag: NSView.TrackingRectTag?
+    var timerStartValue: TimeInterval = 0
+    let decorator: LabelDecorator = ColorWhenLessThanDecorator(limit: 50, color: .red)
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         state = .stopped
         configureTextField()
         configureControlLayer()
-        ServiceFactory().presetQueryService.fetchPresets { (error, presets) in
-            if let presets = presets {
-                print("wooo - \(presets)")
-            }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if let settings = segue.destinationController as? SettingsController {
+            settings.delegate = self
+        }
+        if let tracker = segue.destinationController as? TimerStateTracking {
+            downstreamTrackers.append(tracker)
         }
     }
     
-    var trackingRectTag: NSView.TrackingRectTag?
     override func viewDidAppear() {
         super.viewDidAppear()
         if trackingRectTag == nil {
@@ -53,7 +60,6 @@ class TimerViewController: NSViewController {
         }
     }
     
-    @IBOutlet weak var controlLayer: NSView!
     func configureControlLayer() {
         controlLayer.wantsLayer = true
         controlLayer.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.8).cgColor
@@ -72,31 +78,16 @@ class TimerViewController: NSViewController {
         switch state {
         case .stopped:
             updateDisplay(time: 0)
-            startStopButton.title = "Start"
             self.view.window?.level = .normal
         case .paused:
-            startStopButton.title = "Resume"
-        case.running:
-            startStopButton.title = "Pause"
+            self.view.window?.level = .normal
+        case .running:
             self.view.window?.level = .floating
         }
     }
     
-    @objc dynamic var timerStartValue: Date = Date(timeIntervalSinceReferenceDate: 0)
     
     var timer : CountdownTimer?
-    @IBAction func startStopAction(_ sender: Any) {
-        if timer != nil {
-            if state == .paused {
-                gotoRunningState()
-            } else {
-                gotoPausedState()
-            }
-        }
-        else {
-            startTimer()
-        }
-    }
     
     func gotoRunningState() {
         timer?.start()
@@ -108,27 +99,20 @@ class TimerViewController: NSViewController {
         state = .paused
     }
     
-    @IBAction func resetAction(_ sender: Any) {
-        timer?.stop()
-        timer = nil
-        state = .stopped
-    }
-    
     func startTimer() {
         guard timer == nil else {
             return
         }
-        let startValue = timerStartValue.timeIntervalSinceReferenceDate
-        guard startValue > 0 else {
+        guard timerStartValue > 0 else {
             return
         }
-        timer = CountdownTimer(time: startValue)
+        timer = CountdownTimer(time: timerStartValue)
         timer?.updateAction = { remaining in
             self.updateDisplay(time: remaining)
         }
         timer?.endAction = {
             NSSound.beep()
-            self.resetAction(self)
+            self.resetTimer()
         }
         gotoRunningState()
     }
@@ -136,7 +120,7 @@ class TimerViewController: NSViewController {
     func updateDisplay(time remaining: TimeInterval) {
         let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
         timerDisplay.stringValue = text
-        ColorWhenLessThanDecorator(limit: 50, color: .red).decorate(text: timerDisplay, remainingTime: remaining)
+        decorator.decorate(text: timerDisplay, remainingTime: remaining)
     }
     
     let formatter : DateFormatter = {
@@ -158,7 +142,10 @@ class TimerViewController: NSViewController {
         mouseInside = false
         let deadline =  DispatchTime.now().uptimeNanoseconds +  UInt64(3.0) * NSEC_PER_SEC
         DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds:deadline)) {
-            guard self.mouseInside == false else { return }
+            
+            let allowHiding = self.mouseInside == false && self.state == .running
+            guard allowHiding else { return }
+            
             NSAnimationContext.runAnimationGroup({ (context) in
                 context.duration = 1.0
                 self.controlPanel.animator().alphaValue = 0
@@ -166,6 +153,36 @@ class TimerViewController: NSViewController {
         }
     }
     
-
 }
 
+extension TimerViewController: SettingsDelegate {
+    
+    func updateTimeRemaining(time: TimeInterval) {
+        timerStartValue = time
+    }
+    
+    func startStopTimer() {
+        if timer != nil {
+            if state == .paused {
+                gotoRunningState()
+            } else {
+                gotoPausedState()
+            }
+        }
+        else {
+            startTimer()
+        }
+    }
+    
+    func resetTimer() {
+        timer?.stop()
+        timer = nil
+        updateDisplay(time: 0)
+        state = .stopped
+    }
+    
+    func updateStartValue(_ value: TimeInterval ) {
+        timerStartValue = value
+    }
+    
+}

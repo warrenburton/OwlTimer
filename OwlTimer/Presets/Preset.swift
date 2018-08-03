@@ -12,6 +12,6 @@ import Foundation
 struct Preset: Codable {
     
 	var name: String
-	var duration: Int
+	var duration: TimeInterval
 
 }
