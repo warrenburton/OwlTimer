@@ -41,9 +41,11 @@ class SettingsController: NSViewController, TimerStateTracking {
     }
     
     func loadPresets() {
-        ServiceFactory().presetQueryService.fetchPresets { (error, presets) in
-            if let presets = presets {
-                self.presetSource = PresetSource(presets: presets)
+        presetComboBox.isEnabled = false
+        ServiceFactory().presetQueryService.fetchPresets { (error, source) in
+            if let source = source {
+                self.presetComboBox.isEnabled = true
+                self.presetSource = source
             }
         }
     }
@@ -68,7 +70,7 @@ class SettingsController: NSViewController, TimerStateTracking {
             uiEnabled = false
         }
         
-        presetComboBox.isEnabled = uiEnabled
+        presetComboBox.isEnabled = uiEnabled && presetSource != nil
         durationPicker.isEnabled = uiEnabled
     }
     

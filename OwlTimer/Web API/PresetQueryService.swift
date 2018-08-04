@@ -13,5 +13,5 @@ import Foundation
 /// provides interfaces for remote queries
 ///
 protocol PresetQueryService {
-	func fetchPresets(completion: @escaping (Error?, [Preset]?)->())
+	func fetchPresets(completion: @escaping (Error?, PresetSource?)->())
 }

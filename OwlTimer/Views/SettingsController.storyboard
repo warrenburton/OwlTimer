@@ -11,23 +11,23 @@
             <objects>
                 <viewController id="Tnz-jy-8zr" customClass="SettingsController" customModule="OwlTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <customView key="view" id="CKI-qu-640">
-                        <rect key="frame" x="0.0" y="0.0" width="445" height="139"/>
+                        <rect key="frame" x="0.0" y="0.0" width="445" height="101"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="An0-a0-GQb">
-                                <rect key="frame" x="8" y="8" width="429" height="123"/>
+                                <rect key="frame" x="8" y="8" width="429" height="85"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-6J-KZM">
-                                        <rect key="frame" x="8" y="8" width="413" height="107"/>
+                                        <rect key="frame" x="8" y="8" width="413" height="69"/>
                                         <subviews>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="30" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pG-QX-oQz">
-                                                <rect key="frame" x="0.0" y="29" width="259" height="78"/>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="30" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pG-QX-oQz">
+                                                <rect key="frame" x="0.0" y="29" width="259" height="40"/>
                                                 <subviews>
-                                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JC6-JN-kbL">
-                                                        <rect key="frame" x="0.0" y="37" width="150" height="41"/>
+                                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JC6-JN-kbL">
+                                                        <rect key="frame" x="0.0" y="3" width="150" height="37"/>
                                                         <subviews>
                                                             <comboBox verticalHuggingPriority="750" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-bm-bwk">
-                                                                <rect key="frame" x="0.0" y="17" width="153" height="26"/>
+                                                                <rect key="frame" x="0.0" y="13" width="153" height="26"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="f11-4M-nN8"/>
                                                                 </constraints>
@@ -55,11 +55,11 @@
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
-                                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CS9-nb-Fke">
-                                                        <rect key="frame" x="180" y="34" width="79" height="44"/>
+                                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CS9-nb-Fke">
+                                                        <rect key="frame" x="180" y="0.0" width="79" height="40"/>
                                                         <subviews>
                                                             <datePicker verticalHuggingPriority="750" horizontalCompressionResistancePriority="800" translatesAutoresizingMaskIntoConstraints="NO" id="HMg-Qk-BEi">
-                                                                <rect key="frame" x="0.0" y="21" width="82" height="27"/>
+                                                                <rect key="frame" x="0.0" y="17" width="82" height="27"/>
                                                                 <datePickerCell key="cell" borderStyle="bezel" alignment="left" id="yEX-3U-BGd">
                                                                     <font key="font" metaFont="system"/>
                                                                     <date key="date" timeIntervalSinceReferenceDate="-595987200">
@@ -101,10 +101,10 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView canDrawConcurrently="YES" distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKv-qB-2eJ">
+                                            <stackView canDrawConcurrently="YES" distribution="fill" orientation="horizontal" alignment="top" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKv-qB-2eJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="146" height="21"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4g-Dp-sBr">
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x4g-Dp-sBr">
                                                         <rect key="frame" x="-6" y="-7" width="75" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zyP-LM-S2C">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -114,7 +114,7 @@
                                                             <action selector="startStopAction:" target="Tnz-jy-8zr" id="8I4-eS-UR8"/>
                                                         </connections>
                                                     </button>
-                                                    <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-9r-rpI">
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o6P-9r-rpI">
                                                         <rect key="frame" x="77" y="-7" width="75" height="32"/>
                                                         <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rwn-Mx-ZaR">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -172,7 +172,7 @@
                 </viewController>
                 <customObject id="Gj6-wc-Gd6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112.5" y="32.5"/>
+            <point key="canvasLocation" x="112.5" y="9.5"/>
         </scene>
     </scenes>
 </document>

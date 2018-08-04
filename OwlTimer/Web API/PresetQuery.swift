@@ -14,7 +14,7 @@ class PresetQuery: NSObject, PresetQueryService {
 
 // MARK: - PresetQueryService protocol
 
-    func fetchPresets(completion: @escaping (Error?, [Preset]?)->()) {
+    func fetchPresets(completion: @escaping (Error?, PresetSource?)->()) {
         let presetRequest = RemoteConfig.shared.presetAPI
         Alamofire.request(presetRequest).responseJSON { response in
             
@@ -25,7 +25,8 @@ class PresetQuery: NSObject, PresetQueryService {
             
             do {
                 let decoded = try JSONDecoder().decode([Preset].self, from: data)
-                completion(nil, decoded)
+                let source = PresetSource(presets: decoded)
+                completion(nil, source)
             } catch {
                 completion(ServiceError.decodingError, nil)
             }
