@@ -7,16 +7,20 @@
 //
 
 import Cocoa
+import Alamofire
 
-class TimerViewController: NSViewController, TimerStateTracking {
+class TimerViewController: NSViewController {
     
-    private var downstreamTrackers = [TimerStateTracking]()
+    enum TimerState {
+        case stopped
+        case paused
+        case running
+    }
+    
     var state: TimerState = .stopped {
         didSet {
             validateDisplay()
-            for tracker in downstreamTrackers {
-                tracker.state = state
-            }
+            validateControlDisplay()
         }
     }
     
@@ -24,25 +28,37 @@ class TimerViewController: NSViewController, TimerStateTracking {
     @IBOutlet weak var controlPanel: NSView!
     @IBOutlet weak var controlLayer: NSView!
     
-    var trackingRectTag: NSView.TrackingRectTag?
-    var timerStartValue: TimeInterval = 0
-    let decorator: LabelDecorator = ColorWhenLessThanDecorator(limit: 50, color: .red)
+    //control panel
+    @IBOutlet weak var startStopButton: NSButton!
+    @IBOutlet weak var presetComboBox: NSComboBox!
+    @IBOutlet weak var durationPicker: NSDatePicker!
     
-
+    //timing
+    private var timer: Timer?
+    private var timerDuration: TimeInterval = 0
+    private lazy var startDate: Date = Date()
+    
+    var presets: [Preset] = [] {
+        didSet {
+            presetComboBox.dataSource = self
+            presetComboBox.delegate = self
+        }
+    }
+    
+    var trackingRectTag: NSView.TrackingRectTag?
+    
+    @objc dynamic var timeRemainingAsDate: Date = Date(timeIntervalSinceReferenceDate: 0) {
+        didSet {
+            timerDuration = timeRemainingAsDate.timeIntervalSinceReferenceDate
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         state = .stopped
+        fetchPresets()
         configureTextField()
         configureControlLayer()
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let settings = segue.destinationController as? SettingsController {
-            settings.delegate = self
-        }
-        if let tracker = segue.destinationController as? TimerStateTracking {
-            downstreamTrackers.append(tracker)
-        }
     }
     
     override func viewDidAppear() {
@@ -86,16 +102,32 @@ class TimerViewController: NSViewController, TimerStateTracking {
         }
     }
     
+    func validateControlDisplay() {
+        
+        var uiEnabled = true
+        
+        switch state {
+        case .stopped:
+            startStopButton.title = "Start"
+        case .paused:
+            startStopButton.title = "Resume"
+        case.running:
+            startStopButton.title = "Pause"
+            uiEnabled = false
+        }
+        
+        presetComboBox.isEnabled = uiEnabled && !presets.isEmpty
+        durationPicker.isEnabled = uiEnabled
+    }
     
-    var timer : CountdownTimer?
     
     func gotoRunningState() {
-        timer?.start()
+        start()
         state = .running
     }
     
     func gotoPausedState() {
-        timer?.pause()
+        pause()
         state = .paused
     }
     
@@ -103,16 +135,8 @@ class TimerViewController: NSViewController, TimerStateTracking {
         guard timer == nil else {
             return
         }
-        guard timerStartValue > 0 else {
+        guard timerDuration > 0 else {
             return
-        }
-        timer = CountdownTimer(time: timerStartValue)
-        timer?.updateAction = { remaining in
-            self.updateDisplay(time: remaining)
-        }
-        timer?.endAction = {
-            NSSound.beep()
-            self.resetTimer()
         }
         gotoRunningState()
     }
@@ -120,7 +144,11 @@ class TimerViewController: NSViewController, TimerStateTracking {
     func updateDisplay(time remaining: TimeInterval) {
         let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
         timerDisplay.stringValue = text
-        decorator.decorate(text: timerDisplay, remainingTime: remaining)
+        if remaining > 0, remaining < 50 {
+            timerDisplay.textColor = .red
+        } else {
+            timerDisplay.textColor = .white
+        }
     }
     
     let formatter : DateFormatter = {
@@ -153,13 +181,17 @@ class TimerViewController: NSViewController, TimerStateTracking {
         }
     }
     
+    @IBAction func resetAction(_ sender: Any) {
+        resetTimer()
+    }
+    
+    @IBAction func startStopAction(_ sender: Any) {
+        startStopTimer()
+    }
+    
 }
 
-extension TimerViewController: SettingsDelegate {
-    
-    func updateTimeRemaining(time: TimeInterval) {
-        timerStartValue = time
-    }
+extension TimerViewController {
     
     func startStopTimer() {
         if timer != nil {
@@ -175,14 +207,110 @@ extension TimerViewController: SettingsDelegate {
     }
     
     func resetTimer() {
-        timer?.stop()
+        stop()
         timer = nil
         updateDisplay(time: 0)
         state = .stopped
     }
     
-    func updateStartValue(_ value: TimeInterval ) {
-        timerStartValue = value
+}
+
+extension TimerViewController {
+    
+    func fetchPresets() {
+        self.presetComboBox.isEnabled = false
+        let presetRequest = "http://localhost:4567/presets"
+        Alamofire.request(presetRequest).responseJSON { response in
+            
+            guard let data = response.data else {
+                print("oh no - couldnt get data?")
+                return
+            }
+            
+            do {
+                let decoded = try JSONDecoder().decode([Preset].self, from: data)
+                self.presets =  decoded
+                self.validateControlDisplay()
+            } catch {
+                print("oh no - couldnt decode data?")
+            }
+        }
+    }
+}
+
+extension TimerViewController: NSComboBoxDelegate {
+    func comboBoxSelectionDidChange(_ notification: Notification) {
+        let preset = presets[presetComboBox.indexOfSelectedItem]
+         timeRemainingAsDate = Date(timeIntervalSinceReferenceDate: preset.duration)
+    }
+}
+
+
+extension TimerViewController: NSComboBoxDataSource {
+    
+    func numberOfItems(in comboBox: NSComboBox) -> Int {
+        return presets.count
+    }
+    
+    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+        let preset = presets[index]
+        let formattedtime = formatter.string(from:  Date(timeIntervalSinceReferenceDate: preset.duration))
+        return "\(preset.name) - \(formattedtime)"
+    }
+}
+
+extension TimerViewController { //timing
+    
+    var isActive: Bool {
+        return timer != nil
+    }
+    
+    var remainingTime: TimeInterval {
+        let elapsed = Date().timeIntervalSince(startDate)
+        let remaining = max(0, timerDuration - elapsed)
+        return remaining
+    }
+    
+    func start() {
+        guard !isActive else {
+            return
+        }
+        startDate = Date()
+        reload()
+    }
+    
+    private func reload() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [weak self] _ in
+            self?.tick()
+        })
+    }
+    
+    private func tick() {
+        let elapsed = Date().timeIntervalSince(startDate)
+        if elapsed > timerDuration {
+            stop()
+        } else {
+            let remaining = timerDuration - elapsed
+            updateDisplay(time: remaining)
+            reload()
+        }
+    }
+    
+    func pause() {
+        timer?.invalidate()
+        timer = nil
+        let elapsed = Date().timeIntervalSince(startDate)
+        timerDuration -= elapsed
+    }
+    
+    func stop() {
+        guard isActive else {
+            return
+        }
+        timer?.invalidate()
+        timer = nil
+        NSSound.beep()
+        resetTimer()
     }
     
 }

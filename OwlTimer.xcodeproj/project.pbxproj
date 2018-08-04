@@ -8,29 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3E839AD691B4975FE6A91604 /* libPods-OwlTimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AD282CE5BA0F1BEFA43F86 /* libPods-OwlTimerTests.a */; };
-		AD853AF72110F8D400FFCA02 /* SettingsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD853AF62110F8D400FFCA02 /* SettingsController.storyboard */; };
-		AD853AF92110F9E500FFCA02 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AF82110F9E500FFCA02 /* SettingsController.swift */; };
-		AD853AFB2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFA2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift */; };
-		AD853AFD2111DAE200FFCA02 /* LabelDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFC2111DAE200FFCA02 /* LabelDecorator.swift */; };
 		AD853AFF2111E54000FFCA02 /* DecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */; };
 		AD853B012112018E00FFCA02 /* CountdownTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */; };
-		AD853B032112021500FFCA02 /* TimerStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B022112021500FFCA02 /* TimerStrategy.swift */; };
-		AD853B0D21130D2B00FFCA02 /* presets.json in Resources */ = {isa = PBXBuildFile; fileRef = AD853B0C21130D2B00FFCA02 /* presets.json */; };
 		AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B0F21130DFB00FFCA02 /* Preset.swift */; };
-		AD853B1221130E6800FFCA02 /* PresetSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B1121130E6800FFCA02 /* PresetSource.swift */; };
 		AD853B14211313BE00FFCA02 /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = AD853B13211313BE00FFCA02 /* readme.md */; };
-		AD853B192113185600FFCA02 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B162113185600FFCA02 /* ServiceFactory.swift */; };
-		AD853B1A2113185600FFCA02 /* PresetQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B172113185600FFCA02 /* PresetQuery.swift */; };
-		AD853B1B2113185600FFCA02 /* PresetQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B182113185600FFCA02 /* PresetQueryService.swift */; };
-		AD853B1D211319AB00FFCA02 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B1C211319AA00FFCA02 /* RemoteConfig.swift */; };
-		AD853B20211459FE00FFCA02 /* TimerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B1F211459FE00FFCA02 /* TimerState.swift */; };
 		ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37761210E509500F96EDF /* AppDelegate.swift */; };
 		ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37763210E509500F96EDF /* TimerViewController.swift */; };
 		ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADB37765210E509D00F96EDF /* Assets.xcassets */; };
 		ADB37769210E509D00F96EDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADB37767210E509D00F96EDF /* Main.storyboard */; };
 		ADB37780210E50FC00F96EDF /* OwlWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB3777F210E50FC00F96EDF /* OwlWindow.swift */; };
 		ADB37782210E529800F96EDF /* DragDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37781210E529800F96EDF /* DragDetector.swift */; };
-		ADB37788210E601E00F96EDF /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37787210E601E00F96EDF /* CountdownTimer.swift */; };
 		E869471D4406903645F5DEA8 /* libPods-OwlTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47046D54A1EABD7AE4325113 /* libPods-OwlTimer.a */; };
 /* End PBXBuildFile section */
 
@@ -48,23 +35,12 @@
 		2B9B9EDCC2FE8ECD163E0E1C /* Pods-OwlTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimer/Pods-OwlTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		47046D54A1EABD7AE4325113 /* libPods-OwlTimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OwlTimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7833628CBCF452973405B6E3 /* Pods-OwlTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimerTests/Pods-OwlTimerTests.release.xcconfig"; sourceTree = "<group>"; };
-		AD853AF62110F8D400FFCA02 /* SettingsController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsController.storyboard; sourceTree = "<group>"; };
-		AD853AF82110F9E500FFCA02 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		AD853AFA2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWhenLessThanDecorator.swift; sourceTree = "<group>"; };
-		AD853AFC2111DAE200FFCA02 /* LabelDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelDecorator.swift; sourceTree = "<group>"; };
 		AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorTests.swift; sourceTree = "<group>"; };
 		AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTests.swift; sourceTree = "<group>"; };
-		AD853B022112021500FFCA02 /* TimerStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStrategy.swift; sourceTree = "<group>"; };
 		AD853B0421124C2C00FFCA02 /* sinatra.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = sinatra.rb; sourceTree = "<group>"; };
 		AD853B0C21130D2B00FFCA02 /* presets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = presets.json; sourceTree = "<group>"; };
 		AD853B0F21130DFB00FFCA02 /* Preset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
-		AD853B1121130E6800FFCA02 /* PresetSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetSource.swift; sourceTree = "<group>"; };
 		AD853B13211313BE00FFCA02 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		AD853B162113185600FFCA02 /* ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
-		AD853B172113185600FFCA02 /* PresetQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetQuery.swift; sourceTree = "<group>"; };
-		AD853B182113185600FFCA02 /* PresetQueryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresetQueryService.swift; sourceTree = "<group>"; };
-		AD853B1C211319AA00FFCA02 /* RemoteConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
-		AD853B1F211459FE00FFCA02 /* TimerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerState.swift; sourceTree = "<group>"; };
 		ADB3775E210E509400F96EDF /* OwlTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB37761210E509500F96EDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADB37763210E509500F96EDF /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +52,6 @@
 		ADB37776210E509D00F96EDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADB3777F210E50FC00F96EDF /* OwlWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwlWindow.swift; sourceTree = "<group>"; };
 		ADB37781210E529800F96EDF /* DragDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDetector.swift; sourceTree = "<group>"; };
-		ADB37787210E601E00F96EDF /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		BC63EE39D79FD07058EEC355 /* Pods-OwlTimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimerTests/Pods-OwlTimerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5AD282CE5BA0F1BEFA43F86 /* libPods-OwlTimerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OwlTimerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA14A0628214204C5577918 /* Pods-OwlTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimer.release.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimer/Pods-OwlTimer.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,23 +118,11 @@
 		AD853B0821130BF500FFCA02 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD853B1F211459FE00FFCA02 /* TimerState.swift */,
 				ADB37767210E509D00F96EDF /* Main.storyboard */,
 				ADB37763210E509500F96EDF /* TimerViewController.swift */,
-				AD853AF82110F9E500FFCA02 /* SettingsController.swift */,
-				AD853AF62110F8D400FFCA02 /* SettingsController.storyboard */,
 				AD853B1E21132CFA00FFCA02 /* APIHelp */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		AD853B0921130C0800FFCA02 /* Timing */ = {
-			isa = PBXGroup;
-			children = (
-				ADB37787210E601E00F96EDF /* CountdownTimer.swift */,
-				AD853B022112021500FFCA02 /* TimerStrategy.swift */,
-			);
-			path = Timing;
 			sourceTree = "<group>";
 		};
 		AD853B0A21130C2C00FFCA02 /* Infrastructure */ = {
@@ -170,33 +133,12 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
-		AD853B0B21130C5800FFCA02 /* Decoration */ = {
-			isa = PBXGroup;
-			children = (
-				AD853AFC2111DAE200FFCA02 /* LabelDecorator.swift */,
-				AD853AFA2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift */,
-			);
-			path = Decoration;
-			sourceTree = "<group>";
-		};
 		AD853B0E21130D5700FFCA02 /* Presets */ = {
 			isa = PBXGroup;
 			children = (
 				AD853B0F21130DFB00FFCA02 /* Preset.swift */,
-				AD853B1121130E6800FFCA02 /* PresetSource.swift */,
 			);
 			path = Presets;
-			sourceTree = "<group>";
-		};
-		AD853B152113180200FFCA02 /* Web API */ = {
-			isa = PBXGroup;
-			children = (
-				AD853B1C211319AA00FFCA02 /* RemoteConfig.swift */,
-				AD853B172113185600FFCA02 /* PresetQuery.swift */,
-				AD853B182113185600FFCA02 /* PresetQueryService.swift */,
-				AD853B162113185600FFCA02 /* ServiceFactory.swift */,
-			);
-			path = "Web API";
 			sourceTree = "<group>";
 		};
 		AD853B1E21132CFA00FFCA02 /* APIHelp */ = {
@@ -232,11 +174,8 @@
 		ADB37760210E509400F96EDF /* OwlTimer */ = {
 			isa = PBXGroup;
 			children = (
-				AD853B152113180200FFCA02 /* Web API */,
 				AD853B0E21130D5700FFCA02 /* Presets */,
-				AD853B0B21130C5800FFCA02 /* Decoration */,
 				AD853B0A21130C2C00FFCA02 /* Infrastructure */,
-				AD853B0921130C0800FFCA02 /* Timing */,
 				AD853B0821130BF500FFCA02 /* Views */,
 				ADB37765210E509D00F96EDF /* Assets.xcassets */,
 				ADB3776A210E509D00F96EDF /* Info.plist */,
@@ -343,7 +282,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD853AF72110F8D400FFCA02 /* SettingsController.storyboard in Resources */,
 				ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */,
 				AD853B14211313BE00FFCA02 /* readme.md in Resources */,
 				ADB37769210E509D00F96EDF /* Main.storyboard in Resources */,
@@ -354,7 +292,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD853B0D21130D2B00FFCA02 /* presets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,22 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD853AF92110F9E500FFCA02 /* SettingsController.swift in Sources */,
-				AD853B1D211319AB00FFCA02 /* RemoteConfig.swift in Sources */,
-				ADB37788210E601E00F96EDF /* CountdownTimer.swift in Sources */,
 				AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */,
-				AD853B1B2113185600FFCA02 /* PresetQueryService.swift in Sources */,
-				AD853B20211459FE00FFCA02 /* TimerState.swift in Sources */,
-				AD853AFD2111DAE200FFCA02 /* LabelDecorator.swift in Sources */,
-				AD853AFB2111DAD600FFCA02 /* ColorWhenLessThanDecorator.swift in Sources */,
 				ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */,
-				AD853B1221130E6800FFCA02 /* PresetSource.swift in Sources */,
-				AD853B032112021500FFCA02 /* TimerStrategy.swift in Sources */,
-				AD853B192113185600FFCA02 /* ServiceFactory.swift in Sources */,
 				ADB37782210E529800F96EDF /* DragDetector.swift in Sources */,
 				ADB37780210E50FC00F96EDF /* OwlWindow.swift in Sources */,
 				ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */,
-				AD853B1A2113185600FFCA02 /* PresetQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
