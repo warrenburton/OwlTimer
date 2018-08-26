@@ -12,6 +12,7 @@ target :OwlTimer do
 end
 
 target :OwlTimerTests do
+  pod 'Alamofire'
   pod 'Quick'
   pod 'Nimble'
 end

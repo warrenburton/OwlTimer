@@ -549,7 +549,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BC63EE39D79FD07058EEC355 /* Pods-OwlTimerTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OwlTimerTests/Info.plist;
@@ -569,7 +568,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7833628CBCF452973405B6E3 /* Pods-OwlTimerTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OwlTimerTests/Info.plist;
