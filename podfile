@@ -12,7 +12,6 @@ target :OwlTimer do
 end
 
 target :OwlTimerTests do
-  pod 'Kiwi'
   pod 'Quick'
   pod 'Nimble'
 end

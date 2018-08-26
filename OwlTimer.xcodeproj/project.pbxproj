@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E839AD691B4975FE6A91604 /* libPods-OwlTimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AD282CE5BA0F1BEFA43F86 /* libPods-OwlTimerTests.a */; };
+		AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AD5C3F442130905800E03FF8 /* Owl.m4a */; };
 		AD853AFF2111E54000FFCA02 /* DecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */; };
 		AD853B012112018E00FFCA02 /* CountdownTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */; };
 		AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B0F21130DFB00FFCA02 /* Preset.swift */; };
@@ -35,6 +36,7 @@
 		2B9B9EDCC2FE8ECD163E0E1C /* Pods-OwlTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimer/Pods-OwlTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		47046D54A1EABD7AE4325113 /* libPods-OwlTimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OwlTimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7833628CBCF452973405B6E3 /* Pods-OwlTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimerTests/Pods-OwlTimerTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD5C3F442130905800E03FF8 /* Owl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Owl.m4a; sourceTree = "<group>"; };
 		AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorTests.swift; sourceTree = "<group>"; };
 		AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTests.swift; sourceTree = "<group>"; };
 		AD853B0421124C2C00FFCA02 /* sinatra.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = sinatra.rb; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 				ECA14A0628214204C5577918 /* Pods-OwlTimer.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD5C3F432130903F00E03FF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AD5C3F442130905800E03FF8 /* Owl.m4a */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AD853B062113089000FFCA02 /* Webserver */ = {
@@ -174,6 +184,7 @@
 		ADB37760210E509400F96EDF /* OwlTimer */ = {
 			isa = PBXGroup;
 			children = (
+				AD5C3F432130903F00E03FF8 /* Resources */,
 				AD853B0E21130D5700FFCA02 /* Presets */,
 				AD853B0A21130C2C00FFCA02 /* Infrastructure */,
 				AD853B0821130BF500FFCA02 /* Views */,
@@ -283,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */,
+				AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */,
 				AD853B14211313BE00FFCA02 /* readme.md in Resources */,
 				ADB37769210E509D00F96EDF /* Main.storyboard in Resources */,
 			);
@@ -412,7 +424,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -473,7 +485,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -500,9 +512,8 @@
 			baseConfigurationReference = 2B9B9EDCC2FE8ECD163E0E1C /* Pods-OwlTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 77EQ427L36;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OwlTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -510,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digital-dirtbag.OwlTimer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -519,9 +531,8 @@
 			baseConfigurationReference = ECA14A0628214204C5577918 /* Pods-OwlTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 77EQ427L36;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OwlTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -529,6 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digital-dirtbag.OwlTimer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
@@ -539,9 +551,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 77EQ427L36;
 				INFOPLIST_FILE = OwlTimerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,9 +571,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 77EQ427L36;
 				INFOPLIST_FILE = OwlTimerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -311,6 +311,18 @@ extension TimerViewController { //timing
         timer = nil
         NSSound.beep()
         resetTimer()
+        playSound()
+    }
+    
+}
+
+extension TimerViewController {
+    
+    func playSound() {
+        if let file = Bundle.main.path(forResource: "Owl", ofType: "m4a"),
+            let sound = NSSound(contentsOfFile: file, byReference: true) {
+            sound.play()
+        }
     }
     
 }
