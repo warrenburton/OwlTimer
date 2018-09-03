@@ -27,4 +27,9 @@ class DragDetector: NSView {
             window.setFrameOrigin(window.frame.origin.applying(translate))
         }
     }
+    
+    override func draw(_ dirtyRect: NSRect) {
+        NSColor.clear.set()
+        bounds.fill()
+    }
 }

@@ -12,12 +12,22 @@ class OwlWindow: NSWindow {
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: [.borderless], backing: .buffered , defer: false)
-        self.backgroundColor = .clear
-        self.isOpaque = false
+        isOpaque = false
+        backgroundColor = .clear
     }
     
     override var canBecomeKey: Bool {
         return true
+    }
+    
+    
+    
+    
+}
+
+extension OwlWindow {
+    
+    @IBAction func selectPlugin(_ sender:Any) {
     }
     
 }

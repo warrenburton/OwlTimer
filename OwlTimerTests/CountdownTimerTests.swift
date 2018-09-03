@@ -11,17 +11,69 @@ import Quick
 import Nimble
 @testable import OwlTimer
 
+private class TimeMachine: TimeStrategy {
+    var time: Date = Date()
+    
+    func now() -> Date {
+        return time
+    }
+    
+    @discardableResult func advance(interval: TimeInterval) -> Self {
+        time = time.addingTimeInterval(interval)
+        return self
+    }
+    
+}
+
+
 class CountdownTimerTests: QuickSpec {
     override func spec() {
         describe("a timer that updates at 0.5 second intervals") {
-            xit("should send an update action within 1 second") { }
-            xit("should send an end action when remaining time is zero") { }
-            xit("should send an end action when remaining time is zero") { }
-            xit("should should be in a inactive state after requested time period"){}
+            it("should send an tick action within 1 second") {
+                let timer = CountdownTimer(duration: 10)
+                var didUpdate = false
+                timer.tickAction = { remainingTime, duration in
+                    didUpdate = true
+                }
+                timer.start()
+                expect(didUpdate).toEventually(beTrue(), timeout: 1)
+            }
+            it("should send an end action when remaining time is zero") {
+                let timemachine = TimeMachine()
+                let timer = CountdownTimer(duration: 10, timeStrategy: timemachine)
+                var didEnd = false
+                timer.stopAction = {
+                    didEnd = true
+                }
+                timer.start()
+                timemachine.advance(interval: 11)
+                expect(didEnd).toEventually(beTrue(), timeout: 1)
+            }
+            it("should should be in a inactive state after requested time period"){
+                let timemachine = TimeMachine()
+                let timer = CountdownTimer(duration: 100, timeStrategy: timemachine)
+                timer.start()
+                expect(timer.isActive).to(beTrue())
+                timemachine.advance(interval: 105)
+                expect(timer.isActive).toEventually(beFalse(), timeout: 1)
+            }
         }
         
-        xit("should reflect elapsed time"){}
-        xit("should never be negative"){}
+        it("should reflect elapsed time") {
+            let timemachine = TimeMachine()
+            let timer = CountdownTimer(duration: 100, timeStrategy: timemachine)
+            timer.start()
+            timemachine.advance(interval: 10)
+            expect(timer.remainingTime).to(beCloseTo(90, within: 0.1))
+        }
+        
+        it("should never be negative") {
+            let timemachine = TimeMachine()
+            let timer = CountdownTimer(duration: 100, timeStrategy: timemachine)
+            timer.start()
+            timemachine.advance(interval: 105)
+            expect(timer.remainingTime).to(equal(0))
+        }
     }
 }
 
