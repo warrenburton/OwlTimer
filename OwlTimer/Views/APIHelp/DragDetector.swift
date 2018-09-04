@@ -28,8 +28,4 @@ class DragDetector: NSView {
         }
     }
     
-    override func draw(_ dirtyRect: NSRect) {
-        NSColor.clear.set()
-        bounds.fill()
-    }
 }

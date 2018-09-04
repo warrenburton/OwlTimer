@@ -19,6 +19,7 @@ class ControlPanelViewController: NSViewController {
     @IBOutlet weak var startStopButton: NSButton!
     @IBOutlet weak var presetComboBox: NSComboBox!
     @IBOutlet weak var durationPicker: NSDatePicker!
+    @IBOutlet weak var warningField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,8 @@ class ControlPanelViewController: NSViewController {
         didSet {
             presetComboBox.dataSource = self
             presetComboBox.delegate = self
+            presetComboBox.reloadData()
+            presetComboBox.isEnabled = !presets.isEmpty
         }
     }
     
@@ -75,6 +78,7 @@ class ControlPanelViewController: NSViewController {
         
         presetComboBox.isEnabled = uiEnabled && !presets.isEmpty
         durationPicker.isEnabled = uiEnabled
+        warningField.isEnabled = uiEnabled
     }
     
     let formatter : DateFormatter = {

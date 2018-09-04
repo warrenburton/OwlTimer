@@ -14,6 +14,8 @@ class CountdownTimer: NSObject {
     var tickAction: ((TimeInterval,TimeInterval) -> Void)?
     var stopAction: (() -> Void)?
     
+    let updateInterval: TimeInterval = 0.1
+    
     //timing
     private var timeStrategy: TimeStrategy
     private var timer: Timer?
@@ -60,7 +62,7 @@ class CountdownTimer: NSObject {
     }
     
     private func reload() {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: false, block: { [weak self] _ in
             self?.tick()
         })
     }

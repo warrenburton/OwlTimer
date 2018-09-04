@@ -1,5 +1,5 @@
 //
-//  StaticImageViewController.swift
+//  PieChartViewController.swift
 //  OwlCountdownTimer
 //  
 //  Created by Warren Burton on 2018.
@@ -10,26 +10,26 @@
 import AppKit
 import Foundation
 
-class StaticImageViewController: NSViewController, BackingView {
+class PieChartViewController: NSViewController, BackingView {
     
+	var color: NSColor = NSColor.green.highlight(withLevel: 0.3)!
     @IBOutlet weak var timerDisplay: NSTextField!
-    
 // MARK: - BackingView protocol
-    var pluginView: NSView {
-        return view
-    }
-    static var pluginType: BackingViewType {
-        return .staticImage
-    }
+	var pluginType: BackingViewType { return .pieChart }
+	var pluginView: NSView { return view }
     
+    @IBOutlet var pieView: PieView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTextField()
     }
     
-    
 	func update(duration: TimeInterval, remaining: TimeInterval) {
+        let percentage = remaining/duration
         updateDisplay(time: remaining)
+        pieView.percentage = CGFloat(percentage)
+        pieView.window?.redrawShadow()
 	}
     
     let formatter : DateFormatter = {
@@ -38,21 +38,23 @@ class StaticImageViewController: NSViewController, BackingView {
         return formatter
     }()
     
+    var limit: TimeInterval {
+        return UserDefaults.standard.double(forKey: OwlTimerDefaults.warningLimitSeconds)
+    }
+    
     func updateDisplay(time remaining: TimeInterval) {
         let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
         timerDisplay.stringValue = text
-        if remaining > 0, remaining < 30 {
-            timerDisplay.textColor = .red
+        if remaining > 0, remaining < limit {
+            pieView.pieColor = .red
         } else {
-            timerDisplay.textColor = .white
+            pieView.pieColor = color
         }
     }
     
     func configureTextField() {
-        let shadow = NSShadow()
-        shadow.shadowColor = NSColor.black.withAlphaComponent(0.7)
-        shadow.shadowOffset = NSSize(width: 2, height: 2)
-        shadow.shadowBlurRadius = 3
-        timerDisplay.shadow = shadow
+    
     }
+    
+
 }

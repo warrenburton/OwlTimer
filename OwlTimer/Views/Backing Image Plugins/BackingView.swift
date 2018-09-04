@@ -10,7 +10,7 @@
 import AppKit
 
 protocol BackingView {
-    static var pluginType: BackingViewType { get }
+    var pluginType: BackingViewType { get }
     var pluginView: NSView { get }
     func update(duration: TimeInterval, remaining: TimeInterval)
 }

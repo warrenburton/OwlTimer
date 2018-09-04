@@ -206,7 +206,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="RVj-lW-iCK" secondAttribute="trailing" constant="8" id="pXk-AV-jDD"/>
                                             </constraints>
                                         </view>
-                                        <color key="fillColor" white="0.90980392156862744" alpha="0.88824379280821919" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="fillColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     </box>
                                 </subviews>
                                 <constraints>
@@ -228,6 +228,7 @@
                         <outlet property="durationPicker" destination="nkI-Ol-DAz" id="ws0-vZ-ETO"/>
                         <outlet property="presetComboBox" destination="cri-F7-xh8" id="cDl-LL-sci"/>
                         <outlet property="startStopButton" destination="oOC-Rg-kB0" id="YKF-LA-sKg"/>
+                        <outlet property="warningField" destination="9D6-5Y-IBw" id="A4Z-Zr-yX4"/>
                     </connections>
                 </viewController>
                 <customObject id="Z5k-DD-y1Q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

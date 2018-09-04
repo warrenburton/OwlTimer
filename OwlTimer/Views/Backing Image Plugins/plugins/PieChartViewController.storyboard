@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B2j-oI-9QZ">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pie Chart View Controller-->
+        <scene sceneID="WP0-kY-Jee">
+            <objects>
+                <viewController id="B2j-oI-9QZ" customClass="PieChartViewController" customModule="OwlTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fR3-if-XOK">
+                        <rect key="frame" x="0.0" y="0.0" width="673" height="502"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSi-gu-k6K" customClass="PieView" customModule="OwlTimer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="673" height="502"/>
+                                <subviews>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="MBB-gA-eft">
+                                        <rect key="frame" x="251" y="213" width="172" height="76"/>
+                                        <view key="contentView" id="yaf-Tj-9a8">
+                                            <rect key="frame" x="0.0" y="0.0" width="172" height="76"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="WZE-94-aAO"/>
+                                            <constraint firstAttribute="width" constant="172" id="tJp-NG-w8Y"/>
+                                        </constraints>
+                                        <color key="fillColor" white="1" alpha="0.85560252568493156" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </box>
+                                    <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5G7-PW-mqf">
+                                        <rect key="frame" x="269" y="233" width="136" height="36"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="00:00:00" id="HaG-l6-M81">
+                                            <font key="font" metaFont="systemMedium" size="30"/>
+                                            <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MBB-gA-eft" firstAttribute="centerY" secondItem="PSi-gu-k6K" secondAttribute="centerY" id="XvW-HI-owa"/>
+                                    <constraint firstItem="5G7-PW-mqf" firstAttribute="centerY" secondItem="PSi-gu-k6K" secondAttribute="centerY" id="e8N-hO-ege"/>
+                                    <constraint firstItem="5G7-PW-mqf" firstAttribute="centerX" secondItem="PSi-gu-k6K" secondAttribute="centerX" id="oe6-pX-d6B"/>
+                                    <constraint firstItem="MBB-gA-eft" firstAttribute="centerX" secondItem="PSi-gu-k6K" secondAttribute="centerX" id="uCC-ZJ-dUK"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="PSi-gu-k6K" firstAttribute="centerX" secondItem="fR3-if-XOK" secondAttribute="centerX" id="9aO-ya-8Qt"/>
+                            <constraint firstItem="PSi-gu-k6K" firstAttribute="top" secondItem="fR3-if-XOK" secondAttribute="top" id="Av2-Re-HoW"/>
+                            <constraint firstItem="PSi-gu-k6K" firstAttribute="centerY" secondItem="fR3-if-XOK" secondAttribute="centerY" id="Oyg-Wh-exE"/>
+                            <constraint firstAttribute="bottom" secondItem="PSi-gu-k6K" secondAttribute="bottom" id="b17-bH-oSD"/>
+                            <constraint firstItem="PSi-gu-k6K" firstAttribute="leading" secondItem="fR3-if-XOK" secondAttribute="leading" id="n45-Hp-TRu"/>
+                            <constraint firstAttribute="trailing" secondItem="PSi-gu-k6K" secondAttribute="trailing" id="rAc-HY-sjr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pieView" destination="PSi-gu-k6K" id="YKK-Ln-k1W"/>
+                        <outlet property="timerDisplay" destination="5G7-PW-mqf" id="9m2-78-Nk4"/>
+                    </connections>
+                </viewController>
+                <customObject id="8Qt-aY-PJD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82.5" y="108"/>
+        </scene>
+    </scenes>
+</document>

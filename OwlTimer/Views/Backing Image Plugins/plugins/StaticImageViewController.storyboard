@@ -10,7 +10,7 @@
         <scene sceneID="zFX-9W-np6">
             <objects>
                 <viewController id="c4t-cS-oVe" customClass="StaticImageViewController" customModule="OwlTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="4vQ-c7-A42" customClass="ClearView" customModule="OwlTimer" customModuleProvider="target">
+                    <view key="view" wantsLayer="YES" id="4vQ-c7-A42">
                         <rect key="frame" x="0.0" y="0.0" width="583" height="617"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -18,7 +18,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="583" height="617"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="owl" id="RqX-om-hld"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-rG-fBN">
+                            <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-rG-fBN">
                                 <rect key="frame" x="177" y="138" width="229" height="60"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="qns-Wm-KKa">
                                     <font key="font" metaFont="systemSemibold" size="50"/>

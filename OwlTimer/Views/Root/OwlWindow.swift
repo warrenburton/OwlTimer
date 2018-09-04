@@ -11,7 +11,7 @@ import Cocoa
 class OwlWindow: NSWindow {
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
-        super.init(contentRect: contentRect, styleMask: [.borderless], backing: .buffered , defer: false)
+        super.init(contentRect: contentRect, styleMask: [.borderless], backing: .buffered , defer: flag)
         isOpaque = false
         backgroundColor = .clear
     }
@@ -20,14 +20,12 @@ class OwlWindow: NSWindow {
         return true
     }
     
-    
-    
-    
 }
 
-extension OwlWindow {
-    
-    @IBAction func selectPlugin(_ sender:Any) {
+extension NSWindow {
+    func redrawShadow() {
+        hasShadow = false
+        display()
     }
-    
 }
+

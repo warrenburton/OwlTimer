@@ -60,12 +60,21 @@ class TimerViewController: NSViewController {
         restoreBackingView()
     }
     
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        view.window?.redrawShadow()
+    }
+    
+    fileprivate func saveBackingViewPreference() {
         if let plugin = backingViewPlugin {
-            let current = type(of: plugin).pluginType.rawValue
+            let current = plugin.pluginType.rawValue
             UserDefaults.standard.set(current , forKey: OwlTimerDefaults.currentBackingView)
         }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        saveBackingViewPreference()
     }
     
     func restoreBackingView() {
@@ -82,6 +91,7 @@ class TimerViewController: NSViewController {
             backingView = BackingViewFactory.defaultPlugin()
         }
         backingViewPlugin = backingView
+        backingViewContainer.removeAllSubviews()
         backingViewContainer.addSubview(backingView.pluginView)
         backingViewContainer.pinViewTo(inside: backingView.pluginView)
     }
@@ -120,7 +130,7 @@ class TimerViewController: NSViewController {
             context.duration = 1.0
             controlPanel.animator().alphaValue = 1.0
         }) {
-            self.view.window?.invalidateShadow()
+            //self.view.window?.redrawShadow()
         }
     }
     
@@ -136,9 +146,28 @@ class TimerViewController: NSViewController {
                 context.duration = 1.0
                 self.controlPanel.animator().alphaValue = 0
             }) {
-                self.view.window?.invalidateShadow()
+                //self.view.window?.redrawShadow()
             }
         }
+    }
+}
+
+extension TimerViewController {
+    
+    @objc func selectPlugin(_ sender: Any?) {
+        
+        if let menuItem = sender as? NSMenuItem {
+            let tag = menuItem.tag
+            switch tag {
+            case 0:
+                installBackingPlugin(named: BackingViewType.staticImage.rawValue)
+            case 1:
+                installBackingPlugin(named: BackingViewType.pieChart.rawValue)
+            default:
+                assertionFailure("unhandled menu tag = \(tag)")
+            }
+        }
+        
     }
 }
 
@@ -204,7 +233,7 @@ extension TimerViewController {
         Alamofire.request(presetRequest).responseJSON { response in
             
             guard let data = response.data else {
-                print("oh no - couldnt get data?")
+                print("oh no - couldnt get data? - is sinatra singing?")
                 return
             }
             

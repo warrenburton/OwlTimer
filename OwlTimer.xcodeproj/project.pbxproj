@@ -26,6 +26,10 @@
 		ADAF7F9A2139ADB70050BD05 /* TimeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF7F992139ADB70050BD05 /* TimeStrategy.swift */; };
 		ADAF7F9C2139ADC60050BD05 /* RealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF7F9B2139ADC50050BD05 /* RealTime.swift */; };
 		ADAF7F9F213A934F0050BD05 /* StandardDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADAF7F9E213A934F0050BD05 /* StandardDefaults.plist */; };
+		ADAF7FE8213DAF5B0050BD05 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF7FE7213DAF5A0050BD05 /* PieChartViewController.swift */; };
+		ADAF7FEA213DAFF70050BD05 /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAF7FE9213DAFF70050BD05 /* PieView.swift */; };
+		ADAF7FEC213DB0220050BD05 /* PieChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADAF7FEB213DB0220050BD05 /* PieChartViewController.storyboard */; };
+		ADAF7FEF213DB60A0050BD05 /* NSView+ViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAF7FEE213DB6090050BD05 /* NSView+ViewHelpers.m */; };
 		ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37761210E509500F96EDF /* AppDelegate.swift */; };
 		ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB37763210E509500F96EDF /* TimerViewController.swift */; };
 		ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADB37765210E509D00F96EDF /* Assets.xcassets */; };
@@ -72,6 +76,11 @@
 		ADAF7F992139ADB70050BD05 /* TimeStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStrategy.swift; sourceTree = "<group>"; };
 		ADAF7F9B2139ADC50050BD05 /* RealTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTime.swift; sourceTree = "<group>"; };
 		ADAF7F9E213A934F0050BD05 /* StandardDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = StandardDefaults.plist; sourceTree = "<group>"; };
+		ADAF7FE7213DAF5A0050BD05 /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
+		ADAF7FE9213DAFF70050BD05 /* PieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
+		ADAF7FEB213DB0220050BD05 /* PieChartViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PieChartViewController.storyboard; sourceTree = "<group>"; };
+		ADAF7FED213DB6090050BD05 /* NSView+ViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ViewHelpers.h"; sourceTree = "<group>"; };
+		ADAF7FEE213DB6090050BD05 /* NSView+ViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ViewHelpers.m"; sourceTree = "<group>"; };
 		ADB3775E210E509400F96EDF /* OwlTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwlTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB37761210E509500F96EDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADB37763210E509500F96EDF /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +195,8 @@
 		AD853B1E21132CFA00FFCA02 /* APIHelp */ = {
 			isa = PBXGroup;
 			children = (
+				ADAF7FED213DB6090050BD05 /* NSView+ViewHelpers.h */,
+				ADAF7FEE213DB6090050BD05 /* NSView+ViewHelpers.m */,
 				ADAF7F8D2137F4FF0050BD05 /* NSView+Autolayout.h */,
 				ADAF7F8E2137F4FF0050BD05 /* NSView+Autolayout.m */,
 				ADB37781210E529800F96EDF /* DragDetector.swift */,
@@ -199,8 +210,7 @@
 				ADAF7F8821373CF60050BD05 /* BackingViewType.swift */,
 				ADAF7F8621373CEC0050BD05 /* BackingViewFactory.swift */,
 				ADAF7F802137380A0050BD05 /* BackingView.swift */,
-				ADAF7F82213738280050BD05 /* StaticImageViewController.swift */,
-				ADAF7F842137396B0050BD05 /* StaticImageViewController.storyboard */,
+				ADAF7FE6213DAF270050BD05 /* plugins */,
 			);
 			path = "Backing Image Plugins";
 			sourceTree = "<group>";
@@ -217,8 +227,8 @@
 		ADAF7F91213953FB0050BD05 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				ADB3777F210E50FC00F96EDF /* OwlWindow.swift */,
 				ADB37767210E509D00F96EDF /* Main.storyboard */,
+				ADB3777F210E50FC00F96EDF /* OwlWindow.swift */,
 				ADB37763210E509500F96EDF /* TimerViewController.swift */,
 			);
 			path = Root;
@@ -232,6 +242,25 @@
 				ADAF7F9421395DF80050BD05 /* CountdownTimer.swift */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		ADAF7FE6213DAF270050BD05 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				ADAF7FE9213DAFF70050BD05 /* PieView.swift */,
+				ADAF7FE7213DAF5A0050BD05 /* PieChartViewController.swift */,
+				ADAF7FEB213DB0220050BD05 /* PieChartViewController.storyboard */,
+				ADAF7F82213738280050BD05 /* StaticImageViewController.swift */,
+				ADAF7F842137396B0050BD05 /* StaticImageViewController.storyboard */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		ADAF7FF0213ED6F60050BD05 /* Backend Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Backend Services";
 			sourceTree = "<group>";
 		};
 		ADB37755210E509400F96EDF = {
@@ -258,6 +287,7 @@
 		ADB37760210E509400F96EDF /* OwlTimer */ = {
 			isa = PBXGroup;
 			children = (
+				ADAF7FF0213ED6F60050BD05 /* Backend Services */,
 				ADAF7F8C2137F4FD0050BD05 /* OwlTimer-Bridging-Header.h */,
 				AD5C3F432130903F00E03FF8 /* Resources */,
 				AD853B0E21130D5700FFCA02 /* Presets */,
@@ -376,6 +406,7 @@
 				AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */,
 				AD853B14211313BE00FFCA02 /* readme.md in Resources */,
 				ADAF7F852137396B0050BD05 /* StaticImageViewController.storyboard in Resources */,
+				ADAF7FEC213DB0220050BD05 /* PieChartViewController.storyboard in Resources */,
 				AD8470042133123600EE3E70 /* ControlPanel.storyboard in Resources */,
 				ADB37769210E509D00F96EDF /* Main.storyboard in Resources */,
 			);
@@ -438,8 +469,11 @@
 				ADAF7F8F2137F4FF0050BD05 /* NSView+Autolayout.m in Sources */,
 				AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */,
 				ADAF7F8721373CEC0050BD05 /* BackingViewFactory.swift in Sources */,
+				ADAF7FEF213DB60A0050BD05 /* NSView+ViewHelpers.m in Sources */,
 				ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */,
 				ADAF7F9C2139ADC60050BD05 /* RealTime.swift in Sources */,
+				ADAF7FEA213DAFF70050BD05 /* PieView.swift in Sources */,
+				ADAF7FE8213DAF5B0050BD05 /* PieChartViewController.swift in Sources */,
 				ADAF7F9A2139ADB70050BD05 /* TimeStrategy.swift in Sources */,
 				AD847006213314FE00EE3E70 /* ControlPanelViewController.swift in Sources */,
 				ADAF7F8B2137F2EC0050BD05 /* OwlTimerDefaults.swift in Sources */,

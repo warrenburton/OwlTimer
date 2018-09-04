@@ -18,7 +18,7 @@ class BackingViewFactory: NSObject {
         case .staticImage:
             storyboard = NSStoryboard(name: "StaticImageViewController", bundle: nil)
         case .pieChart:
-            fatalError("unimplemented")
+            storyboard = NSStoryboard(name: "PieChartViewController", bundle: nil)
         }
         
         guard let viewController = storyboard.instantiateInitialController() as? BackingView else {
