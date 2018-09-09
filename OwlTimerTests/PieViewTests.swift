@@ -13,21 +13,33 @@ import XCTest
 @testable import OwlTimer
 
 class PieViewTests: XCTestCase {
-
-    func testPercentageCanBeGreaterThan10() {
-        XCTAssert(false, "Unimplemented test - percentage can be greater than 1.0")
+    
+    let testRect = NSRect(x: 0, y: 0, width: 100, height: 100)
+    
+    func validatePie(_ percentage: CGFloat) {
+        let pie = PieView(frame: testRect)
+        pie.percentage = percentage
+        let harness = NSImage(size: testRect.size)
+        harness.lockFocus()
+        pie.draw(testRect)
+        harness.unlockFocus()
+        XCTAssert(true)
+    }
+    
+    func testPercentageCanBeGreaterThanOne() {
+        validatePie(2.0)
     }
 
-    func testPercentageCanBe0() {
-        XCTAssert(false, "Unimplemented test - percentage can be 0")
+    func testPercentageCanBeZero() {
+        validatePie(0)
     }
 
     func testPercentageCanBeNegative() {
-        XCTAssert(false, "Unimplemented test - percentage can be negative")
+        validatePie(-1.0)
     }
 
-    func testPercentageCanBe10() {
-        XCTAssert(false, "Unimplemented test - percentage can be 1.0")
+    func testPercentageCanBeExactlyOne() {
+        validatePie(1.0)
     }
 
 }

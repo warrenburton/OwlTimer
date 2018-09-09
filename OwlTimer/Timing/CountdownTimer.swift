@@ -15,10 +15,82 @@ import Foundation
 /// Counts down time to zero for a given duration
 ///
 class CountdownTimer: NSObject {
-	var state: TimerState = .stopped {
-		didSet { }
-	}
+    
+    var tickAction: ((TimeInterval,TimeInterval) -> Void)?
+    var stopAction: (() -> ())?
 
-	private var timer: Timer?
+    //timing
+    private var timer: Timer?
+    var timerDuration: TimeInterval = 0
+    private lazy var startDate: Date = timeStrategy.now()
+    let timeStrategy: TimeStrategy
+    init(duration: TimeInterval, timeStrategy: TimeStrategy = RealTime()) {
+        self.timeStrategy = timeStrategy
+        super.init()
+        self.timerDuration = duration
+    }
 
 }
+
+extension CountdownTimer { //timing
+    
+    var canStart: Bool {
+        return timerDuration > 0
+    }
+    
+    var isActive: Bool {
+        return timer != nil
+    }
+    
+    var remainingTime: TimeInterval {
+        let elapsed = timeStrategy.now().timeIntervalSince(startDate)
+        let remaining = max(0, timerDuration - elapsed)
+        return remaining
+    }
+    
+    func start() {
+        guard !isActive else {
+            return
+        }
+        startDate = timeStrategy.now()
+        reload()
+    }
+    
+    private func reload() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+            self?.tick()
+        })
+    }
+    
+    private func tick() {
+        let elapsed = timeStrategy.now().timeIntervalSince(startDate)
+        if elapsed > timerDuration {
+            stop()
+        } else {
+            let remaining = timerDuration - elapsed
+            tickAction?(remaining,timerDuration)
+            reload()
+        }
+    }
+    
+    func pause() {
+        timer?.invalidate()
+        timer = nil
+        let elapsed = timeStrategy.now().timeIntervalSince(startDate)
+        timerDuration -= elapsed
+    }
+    
+    func stop() {
+        guard isActive else {
+            return
+        }
+        timer?.invalidate()
+        timer = nil
+        stopAction?()
+    }
+    
+
+}
+
+
+

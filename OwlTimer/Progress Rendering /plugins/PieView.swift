@@ -39,17 +39,17 @@ class PieView: NSView {
         
         pieColor.set()
         
-        if angle > 0 {
+        //if angle > 0 {
             let path = NSBezierPath()
             path.move(to: center)
             path.line(to: endpoint1)
             path.appendArc(withCenter: center, radius: radius, startAngle: angle, endAngle: -angle, clockwise: false)
             path.line(to: center)
             path.fill()
-        } else {
-            let path = NSBezierPath(ovalIn:NSRect(x: center.x - radius, y: center.y - radius, width: radius*2, height: radius*2))
-            path.fill()
-        }
+//        } else {
+//            let path = NSBezierPath(ovalIn:NSRect(x: center.x - radius, y: center.y - radius, width: radius*2, height: radius*2))
+//            path.fill()
+//        }
         
         
     }

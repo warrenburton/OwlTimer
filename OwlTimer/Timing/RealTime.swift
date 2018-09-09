@@ -15,8 +15,8 @@ class RealTime: NSObject, TimeStrategy {
 
 // MARK: - TimeStrategy protocol
 
-	func now() {
-
+	func now() -> Date {
+        return Date()
 	}
 
 }

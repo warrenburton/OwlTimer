@@ -17,14 +17,14 @@ class TimerViewController: NSViewController {
         case running
     }
     
-    var state: TimerState = .stopped {
+    private(set) var state: TimerState = .stopped {
         didSet {
-            validateDisplay()
-            validateControlDisplay()
+            validateDisplay(state: state)
+            validateControlDisplay(state: state)
+            updateDisplay(time: countdownTimer.remainingTime)
         }
     }
     
-    @IBOutlet weak var timerDisplay: NSTextField!
     @IBOutlet weak var controlPanel: NSView!
     @IBOutlet weak var controlLayer: NSView!
     
@@ -33,10 +33,24 @@ class TimerViewController: NSViewController {
     @IBOutlet weak var presetComboBox: NSComboBox!
     @IBOutlet weak var durationPicker: NSDatePicker!
     
-    //timing
-    private var timer: Timer?
-    private var timerDuration: TimeInterval = 0
-    private lazy var startDate: Date = Date()
+    var originalDuration: TimeInterval = 0
+    lazy var countdownTimer: CountdownTimer = {
+        let timer = CountdownTimer(duration: 0)
+        timer.tickAction = { [weak self] remaining, duration in
+            guard let `self` = self else { return }
+            self.updateDisplay(time: remaining)
+        }
+        timer.stopAction = { [weak self] in
+            guard let `self` = self else { return }
+            self.playSound()
+            self.resetTimer()
+        }
+        return timer
+    }()
+    
+    //renderer
+    @IBOutlet weak var renderViewContainer: NSView!
+    var renderPlugin: RenderView?
     
     var presets: [Preset] = [] {
         didSet {
@@ -49,16 +63,43 @@ class TimerViewController: NSViewController {
     
     @objc dynamic var timeRemainingAsDate: Date = Date(timeIntervalSinceReferenceDate: 0) {
         didSet {
-            timerDuration = timeRemainingAsDate.timeIntervalSinceReferenceDate
+            originalDuration = timeRemaining
+            countdownTimer.timerDuration = timeRemaining
         }
+    }
+    var timeRemaining: TimeInterval {
+        return timeRemainingAsDate.timeIntervalSinceReferenceDate
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        view.window?.hasShadow = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        state = .stopped
         fetchPresets()
-        configureTextField()
         configureControlLayer()
+        restoreRenderView()
+    }
+    
+    func restoreRenderView() {
+        let current = UserDefaults.standard.object(forKey: OwlTimerDefaults.currentRenderView) as? String
+        installRenderPlugin(named: current)
+    }
+    
+    func installRenderPlugin(named: String?) {
+        
+        let plugin: RenderView
+        if let key = named, let type = RenderViewType(rawValue: key) {
+            plugin = RenderViewFactory.renderer(type: type)
+        } else {
+            plugin = RenderViewFactory.defaultPlugin()
+        }
+        renderPlugin = plugin
+        renderViewContainer.removeAllSubviews()
+        renderViewContainer.addSubview(plugin.renderView)
+        renderViewContainer.pinViewTo(inside: plugin.renderView)
     }
     
     override func viewDidAppear() {
@@ -78,19 +119,15 @@ class TimerViewController: NSViewController {
     
     func configureControlLayer() {
         controlLayer.wantsLayer = true
-        controlLayer.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.8).cgColor
+        controlLayer.layer?.backgroundColor = NSColor.controlColor.cgColor
         controlLayer.layer?.cornerRadius = 5
     }
     
-    func configureTextField() {
-        let shadow = NSShadow()
-        shadow.shadowColor = NSColor.black.withAlphaComponent(0.7)
-        shadow.shadowOffset = NSSize(width: 2, height: 2)
-        shadow.shadowBlurRadius = 3
-        timerDisplay.shadow = shadow
+    func updateDisplay(time remaining: TimeInterval) {
+        renderPlugin?.update(duration: originalDuration, remaining: remaining)
     }
     
-    func validateDisplay() {
+    func validateDisplay(state: TimerState) {
         switch state {
         case .stopped:
             updateDisplay(time: 0)
@@ -102,7 +139,7 @@ class TimerViewController: NSViewController {
         }
     }
     
-    func validateControlDisplay() {
+    func validateControlDisplay(state: TimerState) {
         
         var uiEnabled = true
         
@@ -121,41 +158,6 @@ class TimerViewController: NSViewController {
     }
     
     
-    func gotoRunningState() {
-        start()
-        state = .running
-    }
-    
-    func gotoPausedState() {
-        pause()
-        state = .paused
-    }
-    
-    func startTimer() {
-        guard timer == nil else {
-            return
-        }
-        guard timerDuration > 0 else {
-            return
-        }
-        gotoRunningState()
-    }
-    
-    func updateDisplay(time remaining: TimeInterval) {
-        let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
-        timerDisplay.stringValue = text
-        if remaining > 0, remaining < 50 {
-            timerDisplay.textColor = .red
-        } else {
-            timerDisplay.textColor = .white
-        }
-    }
-    
-    let formatter : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("HH'-'mm'-'ss")
-        return formatter
-    }()
     
     var mouseInside = true
     override func mouseEntered(with event: NSEvent) {
@@ -189,31 +191,14 @@ class TimerViewController: NSViewController {
         startStopTimer()
     }
     
+    lazy var formatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("HH'-'mm'-'ss")
+        return formatter
+    }()
+    
 }
 
-extension TimerViewController {
-    
-    func startStopTimer() {
-        if timer != nil {
-            if state == .paused {
-                gotoRunningState()
-            } else {
-                gotoPausedState()
-            }
-        }
-        else {
-            startTimer()
-        }
-    }
-    
-    func resetTimer() {
-        stop()
-        timer = nil
-        updateDisplay(time: 0)
-        state = .stopped
-    }
-    
-}
 
 extension TimerViewController {
     
@@ -230,7 +215,7 @@ extension TimerViewController {
             do {
                 let decoded = try JSONDecoder().decode([Preset].self, from: data)
                 self.presets =  decoded
-                self.validateControlDisplay()
+                self.validateControlDisplay(state: self.state)
             } catch {
                 print("oh no - couldnt decode data?")
             }
@@ -257,64 +242,11 @@ extension TimerViewController: NSComboBoxDataSource {
         let formattedtime = formatter.string(from:  Date(timeIntervalSinceReferenceDate: preset.duration))
         return "\(preset.name) - \(formattedtime)"
     }
+    
+  
 }
 
-extension TimerViewController { //timing
-    
-    var isActive: Bool {
-        return timer != nil
-    }
-    
-    var remainingTime: TimeInterval {
-        let elapsed = Date().timeIntervalSince(startDate)
-        let remaining = max(0, timerDuration - elapsed)
-        return remaining
-    }
-    
-    func start() {
-        guard !isActive else {
-            return
-        }
-        startDate = Date()
-        reload()
-    }
-    
-    private func reload() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { [weak self] _ in
-            self?.tick()
-        })
-    }
-    
-    private func tick() {
-        let elapsed = Date().timeIntervalSince(startDate)
-        if elapsed > timerDuration {
-            stop()
-        } else {
-            let remaining = timerDuration - elapsed
-            updateDisplay(time: remaining)
-            reload()
-        }
-    }
-    
-    func pause() {
-        timer?.invalidate()
-        timer = nil
-        let elapsed = Date().timeIntervalSince(startDate)
-        timerDuration -= elapsed
-    }
-    
-    func stop() {
-        guard isActive else {
-            return
-        }
-        timer?.invalidate()
-        timer = nil
-        NSSound.beep()
-        resetTimer()
-        playSound()
-    }
-    
-}
+
 
 extension TimerViewController {
     
@@ -323,6 +255,66 @@ extension TimerViewController {
             let sound = NSSound(contentsOfFile: file, byReference: true) {
             sound.play()
         }
+    }
+    
+}
+
+extension TimerViewController {
+    
+    @objc func selectPlugin(_ sender: Any?) {
+        
+        if let menuItem = sender as? NSMenuItem {
+            let tag = menuItem.tag
+            switch tag {
+            case 0:
+                installRenderPlugin(named: RenderViewType.staticImage.rawValue)
+            case 1:
+                installRenderPlugin(named: RenderViewType.pieChart.rawValue)
+            default:
+                assertionFailure("unhandled menu tag = \(tag) , dont expand this switch/tag combo - move to a better abstraction")
+            }
+        }
+        
+    }
+}
+
+extension TimerViewController {
+    
+    func startTimer() {
+        guard countdownTimer.canStart else {
+            return
+        }
+        gotoRunningState()
+    }
+    
+    func gotoRunningState() {
+        countdownTimer.start()
+        state = .running
+    }
+    
+    func gotoPausedState() {
+        countdownTimer.pause()
+        state = .paused
+    }
+    
+    func startStopTimer() {
+        if countdownTimer.isActive {
+            if state == .paused {
+                gotoRunningState()
+            } else {
+                gotoPausedState()
+            }
+        }
+        else {
+            startTimer()
+        }
+    }
+    
+    func resetTimer() {
+        countdownTimer.stop()
+        countdownTimer.timerDuration = timeRemaining
+        state = .stopped
+        renderPlugin?.update(duration: timeRemaining, remaining: 0)
     }
     
 }

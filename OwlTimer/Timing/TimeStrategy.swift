@@ -12,7 +12,5 @@
 import Foundation
 
 protocol TimeStrategy {
-
-	func now()
-
+	func now() -> Date
 }

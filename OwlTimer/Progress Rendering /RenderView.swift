@@ -16,9 +16,7 @@ import Foundation
 /// Renders time and/or progress
 ///
 protocol RenderView {
-	var view: NSView { get }
-	var renderType: RenderType { get }
-
-	func updateDisplay(time remaining: TimeInterval)
-
+	var renderView: NSView { get }
+	var renderType: RenderViewType { get }
+    func update(duration: TimeInterval, remaining: TimeInterval)
 }

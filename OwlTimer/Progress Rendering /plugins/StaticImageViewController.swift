@@ -16,12 +16,42 @@ import Foundation
 /// Displays a static image and the time
 ///
 class StaticImageViewController: NSViewController, RenderView {
+    
+    @IBOutlet weak var timerDisplay: NSTextField!
 
 // MARK: - RenderView protocol
 	var renderView: NSView { return view }
 	var renderType: RenderViewType { return .staticImage }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureTextField()
+    }
 
-	func updateDisplay(time remaining: TimeInterval) {
-        
-	}
+    func update(duration: TimeInterval, remaining: TimeInterval) {
+        let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
+        timerDisplay.stringValue = text
+        if remaining > 0, remaining < 50 {
+            timerDisplay.textColor = .red
+        } else {
+            timerDisplay.textColor = .white
+        }
+    }
+    
+    let formatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("HH'-'mm'-'ss")
+        return formatter
+    }()
+    
+    func configureTextField() {
+        let shadow = NSShadow()
+        shadow.shadowColor = NSColor.black.withAlphaComponent(0.7)
+        shadow.shadowOffset = NSSize(width: 2, height: 2)
+        shadow.shadowBlurRadius = 3
+        timerDisplay.shadow = shadow
+    }
+    
+    
+    
 }

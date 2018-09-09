@@ -9,9 +9,11 @@
 #import "NSView+ViewHelpers.h"
 
 static CGFloat PI = 3.14159;
-const NSSize unitSize = { 1.0, 1.0 };
+const NSSize unitSize = {
+    1.0, 1.0
+};
 
-typedef NS_ENUM(NSInteger, DDRectQuadrant) {
+typedef NS_ENUM (NSInteger, DDRectQuadrant) {
     TopQuad,
     RightQuad,
     BottomQuad,
@@ -20,8 +22,7 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
 
 @implementation NSView (ViewHelpers)
 
--(void)removeAllSubviews
-{
+-(void)removeAllSubviews {
     NSArray *subviews = [[self subviews] copy];
     for (NSView *view in subviews) {
         [view removeFromSuperview];
@@ -33,20 +34,18 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
     return NSMakePoint(NSMidX(frame), NSMidY(frame));
 }
 
-+(CGFloat)angleFrom:(CGPoint)pointA to:(CGPoint)pointB
-{
++(CGFloat)angleFrom:(CGPoint)pointA to:(CGPoint)pointB {
     CGFloat deltax = pointA.x - pointB.x;
     CGFloat deltay = pointA.y - pointB.y;
     if (fabs(deltax) < 0.001) {
         deltax = 0.001;
     }
     CGFloat angle = atan(deltay/fabs(deltax))*180.0/PI;
-    angle = (deltax < 0)? 180-angle:angle;
+    angle = (deltax < 0) ? 180-angle : angle;
     return angle;
 }
 
-+(NSPoint)edgePointForAttackAngle:(CGFloat)angle inRect:(NSRect)arect
-{
++(NSPoint)edgePointForAttackAngle:(CGFloat)angle inRect:(NSRect)arect {
     DDRectQuadrant quad = [self quadForAttackAngle:angle inRect:arect];
     
     CGFloat anglerad = angle*PI/180;
@@ -56,8 +55,8 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
         CGFloat opposite = NSHeight(arect)/2;
         CGFloat adjacent = opposite*tan(anglerad);
         
-        opposite *= (quad == TopQuad)? 1:-1;
-        adjacent *= (quad == TopQuad)? 1:-1;
+        opposite *= (quad == TopQuad) ? 1 : -1;
+        adjacent *= (quad == TopQuad) ? 1 : -1;
         
         return NSMakePoint(rectCenter.x + adjacent, rectCenter.y + opposite);
     }
@@ -66,16 +65,14 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
         CGFloat opposite = adjacent/tan(anglerad);
         if (isinf(opposite)) opposite = 0;
         
-        adjacent *= (quad == RightQuad)? 1:-1;
-        opposite *= (quad == RightQuad)? 1:-1;
+        adjacent *= (quad == RightQuad) ? 1 : -1;
+        opposite *= (quad == RightQuad) ? 1 : -1;
         
         return NSMakePoint(rectCenter.x + adjacent, rectCenter.y + opposite);
     }
-    
 }
 
-+(DDRectQuadrant)quadForAttackAngle:(CGFloat)attackangle inRect:(NSRect)arect
-{
++(DDRectQuadrant)quadForAttackAngle:(CGFloat)attackangle inRect:(NSRect)arect {
     CGFloat changeover = [self changeoverAngleForRect:arect];
     CGFloat lowerangle = (changeover + 2*(90-changeover));
     if (attackangle > (360 - changeover) || attackangle < changeover) {
@@ -96,17 +93,16 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
     return [self angleOfAttack:NSMakePoint(NSMaxX(rect), NSMaxY(rect)) forRect:rect];
 }
 
-+(CGFloat)angleOfAttack:(NSPoint)apoint forRect:(NSRect)arect
-{
++(CGFloat)angleOfAttack:(NSPoint)apoint forRect:(NSRect)arect {
     NSPoint rcenter = [self rectCenter:arect];
-    CGFloat deltax =  apoint.x - rcenter.x ;
+    CGFloat deltax = apoint.x - rcenter.x;
     CGFloat deltay = apoint.y - rcenter.y;
     if (deltay == 0) {
-        return deltax > 0 ? 90:270;
+        return deltax > 0 ? 90 : 270;
     }
     CGFloat rawangle = atan(deltax/deltay);
     if (isinf(rawangle)) rawangle = 0;
-    if (deltay < 0 ) {
+    if (deltay < 0) {
         rawangle += PI;
     }
     else if (deltax < 0) {
@@ -117,11 +113,10 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
 }
 
 //angle in degrees
-+(NSPoint)pointWithCenter:(NSPoint)cen radius:(CGFloat)radius atAngle:(CGFloat)theta
-{
++(NSPoint)pointWithCenter:(NSPoint)cen radius:(CGFloat)radius atAngle:(CGFloat)theta {
     CGFloat deltax = radius*cosf((theta * PI)/180);
     CGFloat deltay = radius*sinf((theta * PI)/180);
-    CGPoint newp = CGPointMake(cen.x + deltax,cen.y + deltay);
+    CGPoint newp = CGPointMake(cen.x + deltax, cen.y + deltay);
     return newp;
 }
 
@@ -129,32 +124,30 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
     return NSMakePoint(NSMidX(arect), NSMidY(arect));
 }
 
-- (void)resetScaling {
+-(void)resetScaling {
     [self scaleUnitSquareToSize:[self convertSize:unitSize fromView:nil]];
 }
 
-- (void)setScale:(NSSize) newScale
-{
-	[self resetScaling];
-	[self scaleUnitSquareToSize:newScale];
+-(void)setScale:(NSSize)newScale {
+    [self resetScaling];
+    [self scaleUnitSquareToSize:newScale];
 }
 
-- (NSSize) scale {
+-(NSSize)scale {
     return [self convertSize:unitSize toView:nil];
 }
 
-- (CGFloat) scalePercent {
+-(CGFloat)scalePercent {
     return [self scale].width * 100;
 }
 
-- (void) setScalePercent:(CGFloat) scale
-{
-	scale = scale/100.0;
-	[self setScale:NSMakeSize(scale, scale)];
-	[self setNeedsDisplay:YES];
+-(void)setScalePercent:(CGFloat)scale {
+    scale = scale/100.0;
+    [self setScale:NSMakeSize(scale, scale)];
+    [self setNeedsDisplay:YES];
 }
 
--(NSRect)validateRect:(NSRect)frame{
+-(NSRect)validateRect:(NSRect)frame {
     NSRect vrect = [self visibleRect];
     if (NSIntersectsRect(frame, vrect)) {
         return frame;
@@ -178,9 +171,8 @@ typedef NS_ENUM(NSInteger, DDRectQuadrant) {
 }
 
 -(NSRect)rectWithCorner1:(NSPoint)point1 corner2:(NSPoint)point2 {
-    
-    CGFloat width = MAX(2,fabs(point1.x - point2.x));
-    CGFloat height = MAX(2,fabs(point1.y - point2.y));
+    CGFloat width = MAX(2, fabs(point1.x - point2.x));
+    CGFloat height = MAX(2, fabs(point1.y - point2.y));
     
     CGFloat originx = MIN(point1.x, point2.x);
     CGFloat originy = MIN(point1.y, point2.y);

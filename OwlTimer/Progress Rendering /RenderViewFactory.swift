@@ -9,15 +9,33 @@
 //
 
 
-import Foundation
+import Cocoa
 
 ///
 /// Creates render views
 ///
 class RenderViewFactory: NSObject {
-
-	static func renderer(type: RenderViewType) -> RenderView {
-		return <# instance of RenderView #>
-	}
-
+    
+    static func renderer(type: RenderViewType) -> RenderView {
+        
+        let storyboard: NSStoryboard
+        switch type {
+        case .staticImage:
+            storyboard = NSStoryboard(name: "StaticImageViewController", bundle: nil)
+        case .pieChart:
+            storyboard = NSStoryboard(name: "PieChartViewController", bundle: nil)
+        }
+        
+        guard let viewController = storyboard.instantiateInitialController() as? RenderView else {
+            fatalError("\(type) does not conform to render view")
+        }
+        
+        return viewController
+        
+    }
+    
+    static func defaultPlugin() -> RenderView {
+        return RenderViewFactory.renderer(type: .staticImage)
+    }
+    
 }

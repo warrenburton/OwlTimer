@@ -19,10 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 +(CGFloat)angleOfAttack:(NSPoint)apoint forRect:(NSRect)arect;
 +(NSPoint)edgePointForAttackAngle:(CGFloat)angle inRect:(NSRect)arect;
 +(NSPoint)rectCenter:(NSRect)arect;
-- (void)setScale:(NSSize) newScale;
-- (NSSize)scale;
-- (CGFloat)scalePercent;
-- (void)setScalePercent:(CGFloat) scale;
+-(void)setScale:(NSSize)newScale;
+-(NSSize)scale;
+-(CGFloat)scalePercent;
+-(void)setScalePercent:(CGFloat)scale;
 -(NSRect)validateRect:(NSRect)frame;
 -(NSRect)rectWithCorner1:(NSPoint)point1 corner2:(NSPoint)point2;
 
