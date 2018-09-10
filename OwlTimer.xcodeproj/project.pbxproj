@@ -8,7 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3E839AD691B4975FE6A91604 /* libPods-OwlTimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AD282CE5BA0F1BEFA43F86 /* libPods-OwlTimerTests.a */; };
+		AD397280214535B30039B462 /* RenderViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD39727F214535B30039B462 /* RenderViewType.swift */; };
+		AD397282214535BE0039B462 /* RenderViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD397281214535BE0039B462 /* RenderViewFactory.swift */; };
+		AD3972882145367B0039B462 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3972872145367B0039B462 /* RenderView.swift */; };
+		AD39728A214538420039B462 /* StaticImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD397289214538420039B462 /* StaticImageViewController.swift */; };
+		AD39728D214538BD0039B462 /* StaticImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD39728C214538BD0039B462 /* StaticImageViewController.storyboard */; };
+		AD39728F21453BBB0039B462 /* OwlTimerDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD39728E21453BBA0039B462 /* OwlTimerDefaults.swift */; };
 		AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AD5C3F442130905800E03FF8 /* Owl.m4a */; };
+		AD64F21421453CF600B04A4E /* NSView+Autolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AD39729321453C1A0039B462 /* NSView+Autolayout.m */; };
+		AD64F21621453D0400B04A4E /* NSView+ViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = AD64F21521453D0400B04A4E /* NSView+ViewHelpers.m */; };
+		AD64F21921453E3900B04A4E /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F21821453E3900B04A4E /* CountdownTimer.swift */; };
+		AD64F21B214543CD00B04A4E /* RealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F21A214543CD00B04A4E /* RealTime.swift */; };
+		AD64F21D214543E000B04A4E /* TimeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F21C214543DF00B04A4E /* TimeStrategy.swift */; };
+		AD64F21F2145461A00B04A4E /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F21E2145461A00B04A4E /* PieChartViewController.swift */; };
+		AD64F2212145467100B04A4E /* PieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F2202145467100B04A4E /* PieView.swift */; };
+		AD64F223214547F200B04A4E /* PieChartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD64F222214547F200B04A4E /* PieChartViewController.storyboard */; };
 		AD853AFF2111E54000FFCA02 /* DecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */; };
 		AD853B012112018E00FFCA02 /* CountdownTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */; };
 		AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B0F21130DFB00FFCA02 /* Preset.swift */; };
@@ -36,7 +50,24 @@
 		2B9B9EDCC2FE8ECD163E0E1C /* Pods-OwlTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimer/Pods-OwlTimer.debug.xcconfig"; sourceTree = "<group>"; };
 		47046D54A1EABD7AE4325113 /* libPods-OwlTimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OwlTimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7833628CBCF452973405B6E3 /* Pods-OwlTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimerTests/Pods-OwlTimerTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD39727F214535B30039B462 /* RenderViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderViewType.swift; sourceTree = "<group>"; };
+		AD397281214535BE0039B462 /* RenderViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderViewFactory.swift; sourceTree = "<group>"; };
+		AD3972872145367B0039B462 /* RenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
+		AD397289214538420039B462 /* StaticImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageViewController.swift; sourceTree = "<group>"; };
+		AD39728C214538BD0039B462 /* StaticImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StaticImageViewController.storyboard; sourceTree = "<group>"; };
+		AD39728E21453BBA0039B462 /* OwlTimerDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OwlTimerDefaults.swift; sourceTree = "<group>"; };
+		AD39729021453C180039B462 /* OwlTimer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OwlTimer-Bridging-Header.h"; sourceTree = "<group>"; };
+		AD39729121453C190039B462 /* NSView+Autolayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+Autolayout.h"; sourceTree = "<group>"; };
+		AD39729221453C1A0039B462 /* NSView+ViewHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+ViewHelpers.h"; sourceTree = "<group>"; };
+		AD39729321453C1A0039B462 /* NSView+Autolayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+Autolayout.m"; sourceTree = "<group>"; };
 		AD5C3F442130905800E03FF8 /* Owl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Owl.m4a; sourceTree = "<group>"; };
+		AD64F21521453D0400B04A4E /* NSView+ViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+ViewHelpers.m"; path = "../../../../../talks/nsspain/Prebaked/NSView+ViewHelpers.m"; sourceTree = "<group>"; };
+		AD64F21821453E3900B04A4E /* CountdownTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		AD64F21A214543CD00B04A4E /* RealTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTime.swift; sourceTree = "<group>"; };
+		AD64F21C214543DF00B04A4E /* TimeStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStrategy.swift; sourceTree = "<group>"; };
+		AD64F21E2145461A00B04A4E /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
+		AD64F2202145467100B04A4E /* PieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieView.swift; sourceTree = "<group>"; };
+		AD64F222214547F200B04A4E /* PieChartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PieChartViewController.storyboard; sourceTree = "<group>"; };
 		AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorTests.swift; sourceTree = "<group>"; };
 		AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTests.swift; sourceTree = "<group>"; };
 		AD853B0421124C2C00FFCA02 /* sinatra.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = sinatra.rb; sourceTree = "<group>"; };
@@ -99,12 +130,45 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AD39727E2145358D0039B462 /* Progress Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				AD39728B214538470039B462 /* plugins */,
+				AD3972872145367B0039B462 /* RenderView.swift */,
+				AD397281214535BE0039B462 /* RenderViewFactory.swift */,
+				AD39727F214535B30039B462 /* RenderViewType.swift */,
+			);
+			path = "Progress Renderer";
+			sourceTree = "<group>";
+		};
+		AD39728B214538470039B462 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				AD64F2202145467100B04A4E /* PieView.swift */,
+				AD64F21E2145461A00B04A4E /* PieChartViewController.swift */,
+				AD64F222214547F200B04A4E /* PieChartViewController.storyboard */,
+				AD39728C214538BD0039B462 /* StaticImageViewController.storyboard */,
+				AD397289214538420039B462 /* StaticImageViewController.swift */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
 		AD5C3F432130903F00E03FF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				AD5C3F442130905800E03FF8 /* Owl.m4a */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AD64F21721453E1500B04A4E /* Timing */ = {
+			isa = PBXGroup;
+			children = (
+				AD64F21C214543DF00B04A4E /* TimeStrategy.swift */,
+				AD64F21A214543CD00B04A4E /* RealTime.swift */,
+				AD64F21821453E3900B04A4E /* CountdownTimer.swift */,
+			);
+			path = Timing;
 			sourceTree = "<group>";
 		};
 		AD853B062113089000FFCA02 /* Webserver */ = {
@@ -128,6 +192,7 @@
 		AD853B0821130BF500FFCA02 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AD39727E2145358D0039B462 /* Progress Renderer */,
 				ADB37767210E509D00F96EDF /* Main.storyboard */,
 				ADB37763210E509500F96EDF /* TimerViewController.swift */,
 				AD853B1E21132CFA00FFCA02 /* APIHelp */,
@@ -138,6 +203,7 @@
 		AD853B0A21130C2C00FFCA02 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				AD39728E21453BBA0039B462 /* OwlTimerDefaults.swift */,
 				ADB37761210E509500F96EDF /* AppDelegate.swift */,
 			);
 			path = Infrastructure;
@@ -154,8 +220,13 @@
 		AD853B1E21132CFA00FFCA02 /* APIHelp */ = {
 			isa = PBXGroup;
 			children = (
+				AD39729121453C190039B462 /* NSView+Autolayout.h */,
+				AD39729321453C1A0039B462 /* NSView+Autolayout.m */,
+				AD39729221453C1A0039B462 /* NSView+ViewHelpers.h */,
+				AD64F21521453D0400B04A4E /* NSView+ViewHelpers.m */,
 				ADB37781210E529800F96EDF /* DragDetector.swift */,
 				ADB3777F210E50FC00F96EDF /* OwlWindow.swift */,
+				AD39729021453C180039B462 /* OwlTimer-Bridging-Header.h */,
 			);
 			path = APIHelp;
 			sourceTree = "<group>";
@@ -184,6 +255,7 @@
 		ADB37760210E509400F96EDF /* OwlTimer */ = {
 			isa = PBXGroup;
 			children = (
+				AD64F21721453E1500B04A4E /* Timing */,
 				AD5C3F432130903F00E03FF8 /* Resources */,
 				AD853B0E21130D5700FFCA02 /* Presets */,
 				AD853B0A21130C2C00FFCA02 /* Infrastructure */,
@@ -257,6 +329,7 @@
 				TargetAttributes = {
 					ADB3775D210E509400F96EDF = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -294,9 +367,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADB37766210E509D00F96EDF /* Assets.xcassets in Resources */,
+				AD64F223214547F200B04A4E /* PieChartViewController.storyboard in Resources */,
 				AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */,
 				AD853B14211313BE00FFCA02 /* readme.md in Resources */,
 				ADB37769210E509D00F96EDF /* Main.storyboard in Resources */,
+				AD39728D214538BD0039B462 /* StaticImageViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,10 +428,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD64F21921453E3900B04A4E /* CountdownTimer.swift in Sources */,
+				AD39728F21453BBB0039B462 /* OwlTimerDefaults.swift in Sources */,
 				AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */,
 				ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */,
+				AD64F21B214543CD00B04A4E /* RealTime.swift in Sources */,
+				AD64F21421453CF600B04A4E /* NSView+Autolayout.m in Sources */,
+				AD64F2212145467100B04A4E /* PieView.swift in Sources */,
+				AD64F21F2145461A00B04A4E /* PieChartViewController.swift in Sources */,
+				AD64F21621453D0400B04A4E /* NSView+ViewHelpers.m in Sources */,
+				AD397282214535BE0039B462 /* RenderViewFactory.swift in Sources */,
+				AD397280214535B30039B462 /* RenderViewType.swift in Sources */,
 				ADB37782210E529800F96EDF /* DragDetector.swift in Sources */,
 				ADB37780210E50FC00F96EDF /* OwlWindow.swift in Sources */,
+				AD3972882145367B0039B462 /* RenderView.swift in Sources */,
+				AD64F21D214543E000B04A4E /* TimeStrategy.swift in Sources */,
+				AD39728A214538420039B462 /* StaticImageViewController.swift in Sources */,
 				ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +599,7 @@
 			baseConfigurationReference = 2B9B9EDCC2FE8ECD163E0E1C /* Pods-OwlTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OwlTimer/Info.plist;
@@ -522,6 +610,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digital-dirtbag.OwlTimer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OwlTimer/Views/APIHelp/OwlTimer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -531,6 +621,7 @@
 			baseConfigurationReference = ECA14A0628214204C5577918 /* Pods-OwlTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OwlTimer/Info.plist;
@@ -541,6 +632,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.digital-dirtbag.OwlTimer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "OwlTimer/Views/APIHelp/OwlTimer-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
