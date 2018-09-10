@@ -1,6 +1,6 @@
 # OwlTimer
 
-Session project for NSSpain 2019.
+Session project for NSSpain 2018.
 
 - `git clone <reporef>`
 - `cd OwlTimer`
