@@ -2,7 +2,7 @@
 
 Session project for NSSpain 2019.
 
-- clone *reporef*
+- `git clone <reporef>`
 - `cd OwlTimer`
 - `pod install`
 
