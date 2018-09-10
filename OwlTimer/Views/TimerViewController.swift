@@ -66,6 +66,7 @@ class TimerViewController: NSViewController {
         if trackingRectTag == nil {
             trackingRectTag = view.addTrackingRect(view.bounds, owner: self, userData: nil, assumeInside: false)
         }
+        view.window?.hasShadow = false
     }
     
     override func viewDidDisappear() {
