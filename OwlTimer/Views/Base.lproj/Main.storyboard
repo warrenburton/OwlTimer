@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -710,18 +710,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="342" height="477"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aPm-Ik-vcY">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="ETz-Pb-4am">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="477"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="owl" id="A4C-X5-OYP"/>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQm-Th-Tio">
-                                <rect key="frame" x="-2" y="100" width="346" height="60"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="ppS-yS-PJh">
-                                    <font key="font" metaFont="systemSemibold" size="50"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cdO-hC-TzZ">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                 <subviews>
@@ -877,16 +868,13 @@
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="aPm-Ik-vcY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="89T-Pe-CaC"/>
-                            <constraint firstAttribute="bottom" secondItem="aPm-Ik-vcY" secondAttribute="bottom" id="Guh-EO-S4y"/>
                             <constraint firstItem="cdO-hC-TzZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Rda-3f-FID"/>
-                            <constraint firstItem="cdO-hC-TzZ" firstAttribute="top" secondItem="rQm-Th-Tio" secondAttribute="bottom" constant="1" id="SC7-Qv-5ry"/>
                             <constraint firstAttribute="trailing" secondItem="cdO-hC-TzZ" secondAttribute="trailing" id="Uzm-va-QGN"/>
-                            <constraint firstItem="aPm-Ik-vcY" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="a4N-Dh-k6R"/>
-                            <constraint firstItem="rQm-Th-Tio" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ao1-It-HSI"/>
-                            <constraint firstAttribute="trailing" secondItem="aPm-Ik-vcY" secondAttribute="trailing" id="cYK-FN-pwp"/>
+                            <constraint firstAttribute="trailing" secondItem="ETz-Pb-4am" secondAttribute="trailing" id="aKk-NO-O7h"/>
+                            <constraint firstItem="ETz-Pb-4am" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="eDr-31-zZW"/>
+                            <constraint firstItem="ETz-Pb-4am" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="h9r-cV-V5z"/>
+                            <constraint firstAttribute="bottom" secondItem="ETz-Pb-4am" secondAttribute="bottom" id="uiD-u4-Kv9"/>
                             <constraint firstAttribute="bottom" secondItem="cdO-hC-TzZ" secondAttribute="bottom" id="vHw-O8-RgW"/>
-                            <constraint firstAttribute="trailing" secondItem="rQm-Th-Tio" secondAttribute="trailing" id="ycJ-4y-aaS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -894,17 +882,14 @@
                         <outlet property="controlPanel" destination="cdO-hC-TzZ" id="xDe-64-6ID"/>
                         <outlet property="durationPicker" destination="BUd-Vn-c8f" id="IO4-CS-w1C"/>
                         <outlet property="presetComboBox" destination="AiA-IG-LTm" id="0JL-4m-VJG"/>
+                        <outlet property="renderViewContainer" destination="ETz-Pb-4am" id="cdR-Zo-8YZ"/>
                         <outlet property="startStopButton" destination="kbl-2X-0bJ" id="cv1-gI-mm6"/>
-                        <outlet property="timerDisplay" destination="rQm-Th-Tio" id="E3u-PA-W7i"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="Zwl-pA-dXO"/>
             </objects>
-            <point key="canvasLocation" x="75" y="851"/>
+            <point key="canvasLocation" x="-1" y="863.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="owl" width="342" height="477"/>
-    </resources>
 </document>

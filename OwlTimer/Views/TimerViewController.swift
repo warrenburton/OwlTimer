@@ -24,7 +24,7 @@ class TimerViewController: NSViewController {
         }
     }
     
-    @IBOutlet weak var timerDisplay: NSTextField!
+    
     @IBOutlet weak var controlPanel: NSView!
     @IBOutlet weak var controlLayer: NSView!
     
@@ -37,6 +37,10 @@ class TimerViewController: NSViewController {
     private var timer: Timer?
     private var timerDuration: TimeInterval = 0
     private lazy var startDate: Date = Date()
+    
+    //renderer
+    @IBOutlet weak var renderViewContainer: NSView!
+    var renderPlugin: RenderView?
     
     var presets: [Preset] = [] {
         didSet {
@@ -53,12 +57,31 @@ class TimerViewController: NSViewController {
         }
     }
     
+    func restoreRenderView() {
+        let current = UserDefaults.standard.object(forKey: OwlTimerDefaults.currentRenderView) as? String
+        installRenderPlugin(named: current)
+    }
+    
+    func installRenderPlugin(named: String?) {
+        
+        let plugin: RenderView
+        if let key = named, let type = RenderViewType(rawValue: key) {
+            plugin = RenderViewFactory.renderer(type: type)
+        } else {
+            plugin = RenderViewFactory.defaultPlugin()
+        }
+        renderPlugin = plugin
+        renderViewContainer.removeAllSubviews()
+        renderViewContainer.addSubview(plugin.renderView)
+        renderViewContainer.pinViewTo(inside: plugin.renderView)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         state = .stopped
         fetchPresets()
-        configureTextField()
         configureControlLayer()
+        restoreRenderView()
     }
     
     override func viewDidAppear() {
@@ -83,18 +106,12 @@ class TimerViewController: NSViewController {
         controlLayer.layer?.cornerRadius = 5
     }
     
-    func configureTextField() {
-        let shadow = NSShadow()
-        shadow.shadowColor = NSColor.black.withAlphaComponent(0.7)
-        shadow.shadowOffset = NSSize(width: 2, height: 2)
-        shadow.shadowBlurRadius = 3
-        timerDisplay.shadow = shadow
-    }
+    
     
     func validateDisplay() {
         switch state {
         case .stopped:
-            updateDisplay(time: 0)
+            renderPlugin?.updateDisplay(time: 0)
             self.view.window?.level = .normal
         case .paused:
             self.view.window?.level = .normal
@@ -142,15 +159,7 @@ class TimerViewController: NSViewController {
         gotoRunningState()
     }
     
-    func updateDisplay(time remaining: TimeInterval) {
-        let text = formatter.string(from:  Date(timeIntervalSinceReferenceDate: remaining))
-        timerDisplay.stringValue = text
-        if remaining > 0, remaining < 50 {
-            timerDisplay.textColor = .red
-        } else {
-            timerDisplay.textColor = .white
-        }
-    }
+   
     
     let formatter : DateFormatter = {
         let formatter = DateFormatter()
@@ -210,7 +219,7 @@ extension TimerViewController {
     func resetTimer() {
         stop()
         timer = nil
-        updateDisplay(time: 0)
+        renderPlugin?.updateDisplay(time: 0)
         state = .stopped
     }
     
@@ -292,7 +301,7 @@ extension TimerViewController { //timing
             stop()
         } else {
             let remaining = timerDuration - elapsed
-            updateDisplay(time: remaining)
+            renderPlugin?.updateDisplay(time: remaining)
             reload()
         }
     }

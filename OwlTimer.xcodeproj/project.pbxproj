@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3E839AD691B4975FE6A91604 /* libPods-OwlTimerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AD282CE5BA0F1BEFA43F86 /* libPods-OwlTimerTests.a */; };
 		AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = AD5C3F442130905800E03FF8 /* Owl.m4a */; };
+		AD64F24E2148FD3700B04A4E /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F24D2148FD3700B04A4E /* RenderView.swift */; };
+		AD64F2502148FD4300B04A4E /* RenderViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F24F2148FD4300B04A4E /* RenderViewFactory.swift */; };
+		AD64F2522148FD4F00B04A4E /* RenderViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F2512148FD4F00B04A4E /* RenderViewType.swift */; };
+		AD64F2542148FD5F00B04A4E /* StaticImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD64F2532148FD5E00B04A4E /* StaticImageViewController.swift */; };
+		AD64F2562148FD9B00B04A4E /* StaticImageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD64F2552148FD9B00B04A4E /* StaticImageViewController.storyboard */; };
 		AD853AFF2111E54000FFCA02 /* DecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */; };
 		AD853B012112018E00FFCA02 /* CountdownTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */; };
 		AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD853B0F21130DFB00FFCA02 /* Preset.swift */; };
@@ -37,6 +42,11 @@
 		47046D54A1EABD7AE4325113 /* libPods-OwlTimer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OwlTimer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7833628CBCF452973405B6E3 /* Pods-OwlTimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwlTimerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OwlTimerTests/Pods-OwlTimerTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD5C3F442130905800E03FF8 /* Owl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Owl.m4a; sourceTree = "<group>"; };
+		AD64F24D2148FD3700B04A4E /* RenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
+		AD64F24F2148FD4300B04A4E /* RenderViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderViewFactory.swift; sourceTree = "<group>"; };
+		AD64F2512148FD4F00B04A4E /* RenderViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderViewType.swift; sourceTree = "<group>"; };
+		AD64F2532148FD5E00B04A4E /* StaticImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageViewController.swift; sourceTree = "<group>"; };
+		AD64F2552148FD9B00B04A4E /* StaticImageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StaticImageViewController.storyboard; path = Prebaked/StaticImageViewController.storyboard; sourceTree = SOURCE_ROOT; };
 		AD853AFE2111E54000FFCA02 /* DecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorTests.swift; sourceTree = "<group>"; };
 		AD853B002112018E00FFCA02 /* CountdownTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerTests.swift; sourceTree = "<group>"; };
 		AD853B0421124C2C00FFCA02 /* sinatra.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = sinatra.rb; sourceTree = "<group>"; };
@@ -105,6 +115,18 @@
 				AD5C3F442130905800E03FF8 /* Owl.m4a */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AD64F24C2148FCF500B04A4E /* Rendering Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				AD64F2552148FD9B00B04A4E /* StaticImageViewController.storyboard */,
+				AD64F2532148FD5E00B04A4E /* StaticImageViewController.swift */,
+				AD64F2512148FD4F00B04A4E /* RenderViewType.swift */,
+				AD64F24D2148FD3700B04A4E /* RenderView.swift */,
+				AD64F24F2148FD4300B04A4E /* RenderViewFactory.swift */,
+			);
+			path = "Rendering Plugins";
 			sourceTree = "<group>";
 		};
 		AD853B062113089000FFCA02 /* Webserver */ = {
@@ -184,6 +206,7 @@
 		ADB37760210E509400F96EDF /* OwlTimer */ = {
 			isa = PBXGroup;
 			children = (
+				AD64F24C2148FCF500B04A4E /* Rendering Plugins */,
 				AD5C3F432130903F00E03FF8 /* Resources */,
 				AD853B0E21130D5700FFCA02 /* Presets */,
 				AD853B0A21130C2C00FFCA02 /* Infrastructure */,
@@ -297,6 +320,7 @@
 				AD5C3F45213091F700E03FF8 /* Owl.m4a in Resources */,
 				AD853B14211313BE00FFCA02 /* readme.md in Resources */,
 				ADB37769210E509D00F96EDF /* Main.storyboard in Resources */,
+				AD64F2562148FD9B00B04A4E /* StaticImageViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,8 +379,12 @@
 			files = (
 				AD853B1021130DFC00FFCA02 /* Preset.swift in Sources */,
 				ADB37764210E509500F96EDF /* TimerViewController.swift in Sources */,
+				AD64F2502148FD4300B04A4E /* RenderViewFactory.swift in Sources */,
+				AD64F24E2148FD3700B04A4E /* RenderView.swift in Sources */,
+				AD64F2522148FD4F00B04A4E /* RenderViewType.swift in Sources */,
 				ADB37782210E529800F96EDF /* DragDetector.swift in Sources */,
 				ADB37780210E50FC00F96EDF /* OwlWindow.swift in Sources */,
+				AD64F2542148FD5F00B04A4E /* StaticImageViewController.swift in Sources */,
 				ADB37762210E509500F96EDF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
